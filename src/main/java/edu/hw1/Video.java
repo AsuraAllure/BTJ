@@ -3,6 +3,7 @@ package edu.hw1;
 public class Video {
     private static final int COUNT_SECOND_PER_MINUTE = 60;
     private static final int FAIL_CODE = -1;
+    private static final int OFFSET_TO_SEPARATOR = 3;
 
     private Video() {
     }
@@ -15,18 +16,18 @@ public class Video {
             return FAIL_CODE;
         }
 
-        final int OFFSET_TO_SEPARATOR = 3;
         if (input.charAt(lengthInput - OFFSET_TO_SEPARATOR) != ':') {
             return FAIL_CODE;
         }
-        int countMinutes, countSecond;
+        int countMinutes;
+        int countSecond;
 
         try {
             countSecond = Integer.parseInt(input.substring(lengthInput - 2, lengthInput));
             if (countSecond > COUNT_SECOND_PER_MINUTE) {
                 throw new NumberFormatException();
             }
-            countMinutes = Integer.parseInt(input.substring(0, lengthInput - 3));
+            countMinutes = Integer.parseInt(input.substring(0, lengthInput - OFFSET_TO_SEPARATOR));
         } catch (NumberFormatException ex) {
             return FAIL_CODE;
         }

@@ -6,15 +6,16 @@ public class Arrays {
 
     public static boolean attachedArray(int[] a, int[] b) {
         int minLength = Math.min(a.length, b.length);
-        int maxA;
-        int maxB;
 
         if (minLength == 0) {
             return a.length == 0;
         }
 
-        int minA = maxA = a[0];
-        int minB = maxB = b[0];
+        int minA = a[0];
+        int maxA = a[0];
+        int minB = b[0];
+        int maxB = b[0];
+
         for (int i = 1; i < minLength; i += 1) {
             if (a[i] > maxA) {
                 maxA = a[i];
