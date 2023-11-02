@@ -2,6 +2,7 @@ package edu.hw1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -23,5 +24,9 @@ public final class Main {
             // for you, but you can always add more by pressing Ctrl+F8.
             LOGGER.info("i = {}", i);
         }
+    }
+
+    public static void hello() {
+        LOGGER.info("Hello, world!");
     }
 }
