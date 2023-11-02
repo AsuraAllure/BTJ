@@ -5,26 +5,22 @@ public class Polindrom {
         return  Character.getNumericValue(a.charAt(0)) +
             Character.getNumericValue(a.charAt(1));
     }
-    public static boolean isPolindromeDescendant(int number){
-        String represent_number = String.valueOf(number);
+    public static boolean isPolindromeDescendant(String representNumber){
 
-        if (represent_number.equals(new StringBuilder(represent_number).reverse().toString()))
+        if (representNumber.equals(new StringBuilder(representNumber).reverse().toString()))
             return true;
 
-        if (represent_number.length() == 2  &&
-            getSumTwoCharacter(represent_number) < 10)
+        if (representNumber.length() == 2  &&
+            getSumTwoCharacter(representNumber) < 10)
             return false;
 
         StringBuilder descedent = new StringBuilder();
-        for(int i = 1; i < represent_number.length() ; i += 2){
-
+        for(int i = 1; i < representNumber.length() ; i += 2){
             String sub_result =Integer.toString(
-                getSumTwoCharacter(represent_number.substring(i-1, i+1))
+                getSumTwoCharacter(representNumber.substring(i-1, i+1))
             );
-
-            for (int j =0; j < sub_result.length(); j += 1)
-                descedent.append(sub_result.charAt(j));
+            descedent.append(sub_result);
         }
-        return isPolindromeDescendant(Integer.parseInt(descedent.toString()));
+        return isPolindromeDescendant(descedent.toString());
     }
 }

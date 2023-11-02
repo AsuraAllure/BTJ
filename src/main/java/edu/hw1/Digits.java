@@ -7,13 +7,12 @@ public class Digits {
         int countDigit = 0;
 
         if (number == 0)
-            countDigit += 1;
+            countDigit++;
 
         while (number > 0) {
             number /= 10;
-            countDigit += 1;
+            countDigit++;
         }
-
         return countDigit;
     }
 }

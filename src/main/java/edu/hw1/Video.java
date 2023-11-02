@@ -1,6 +1,8 @@
 package edu.hw1;
 
 public class Video {
+
+    private static final int countSecondInMinute = 60;
     public static int lengthVideo(String input){
         int lengthInput = input.length();
         if (lengthInput < 5)
@@ -11,13 +13,13 @@ public class Video {
 
         try {
             countSecond = Integer.parseInt(input.substring(lengthInput - 2, lengthInput));
-            if (countSecond > 60)
+            if (countSecond > countSecondInMinute)
                 throw new NumberFormatException();
             countMinutes = Integer.parseInt(input.substring(0,lengthInput - 3 ));
         }catch (NumberFormatException a){
             return -1;
         }
 
-        return countSecond + 60 * countMinutes ;
+        return countSecond + countSecondInMinute * countMinutes ;
     }
 }

@@ -21,7 +21,7 @@ public class Rotator {
                 cur_power = digits.size() - 1;
 
             if (digits.get(i) == 1)
-                result += Math.pow(2,cur_power);
+                result += (int) Math.pow(2,cur_power);
         }
         return result;
     }
