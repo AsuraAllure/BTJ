@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestChessKnight {
     @Test
-    public void chessKnight(){
+    public void chessKnight() {
         Assertions.assertTrue(new ChessHorse(new int[][] {
             {0, 0, 0, 1, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0},

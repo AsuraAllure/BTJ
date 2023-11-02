@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestKaaprekar {
     @Test
-    public void kaprekar(){
+    public void kaprekar() {
         Assertions.assertEquals(0, Kaprekar.kaprekarNumber(6174));
         Assertions.assertEquals(3, Kaprekar.kaprekarNumber(3524));
         Assertions.assertEquals(5, Kaprekar.kaprekarNumber(6621));
