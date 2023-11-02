@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Kaprekar {
-    private static final int failCode = -1;
-    private static final int kaprekarNumber = 6174;
+    private static final int FAIL_CODE = -1;
+    private static final int KAPREKAR_NUMBER = 6174;
 
     private Kaprekar() {
     }
@@ -32,28 +32,30 @@ public class Kaprekar {
                 }
             }
         }
-        return failCode;
+        return FAIL_CODE;
     }
 
     private static int countKaprekar(int a) {
-        if (a == kaprekarNumber) {
+        if (a == KAPREKAR_NUMBER) {
             return 0;
         }
 
         List<Integer> digits = new ArrayList<>(
-            Integer.
-                toString(a)
+            Integer
+                .toString(a)
                 .chars()
                 .boxed()
                 .sorted()
                 .toList()
         );
-        Integer inc = digits.stream().reduce((r, s) -> 10 * r + s).orElse(failCode);
-        Collections.reverse(digits);
-        Integer dec = digits.stream().reduce((r, s) -> 10 * r + s).orElse(failCode);
 
-        if (inc == failCode || dec == failCode) {
-            return failCode;
+        final int ORDER_MULTIPLIER = 10;
+        Integer inc = digits.stream().reduce((r, s) -> ORDER_MULTIPLIER * r + s).orElse(FAIL_CODE);
+        Collections.reverse(digits);
+        Integer dec = digits.stream().reduce((r, s) -> ORDER_MULTIPLIER * r + s).orElse(FAIL_CODE);
+
+        if (inc == FAIL_CODE || dec == FAIL_CODE) {
+            return FAIL_CODE;
         }
         return countKaprekar(dec - inc) + 1;
     }
