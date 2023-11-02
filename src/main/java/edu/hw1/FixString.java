@@ -1,6 +1,9 @@
 package edu.hw1;
 
 public class FixString {
+    private FixString() {
+    }
+
     public static String incorrectString(String input) {
         if (input.length() <= 1) {
             return input;

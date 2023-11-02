@@ -1,9 +1,12 @@
 package edu.hw1;
 
 public class Polindrom {
+    private Polindrom() {
+    }
+
     private static int getSumTwoCharacter(String a) {
-        return Character.getNumericValue(a.charAt(0)) +
-            Character.getNumericValue(a.charAt(1));
+        return Character.getNumericValue(a.charAt(0))
+            + Character.getNumericValue(a.charAt(1));
     }
 
     public static boolean isPolindromeDescendant(String representNumber) {
@@ -12,17 +15,19 @@ public class Polindrom {
             return true;
         }
 
-        if (representNumber.length() == 2 &&
-            getSumTwoCharacter(representNumber) < 10) {
+        final int MIN_DESCEDENT = 10;
+
+        if (representNumber.length() == 2
+            && getSumTwoCharacter(representNumber) < MIN_DESCEDENT) {
             return false;
         }
 
         StringBuilder descedent = new StringBuilder();
         for (int i = 1; i < representNumber.length(); i += 2) {
-            String sub_result = Integer.toString(
+            String subResult = Integer.toString(
                 getSumTwoCharacter(representNumber.substring(i - 1, i + 1))
             );
-            descedent.append(sub_result);
+            descedent.append(subResult);
         }
         return isPolindromeDescendant(descedent.toString());
     }

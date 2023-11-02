@@ -1,29 +1,36 @@
 package edu.hw1;
 
 public class Video {
+    private static final int COUNT_SECOND_PER_MINUTE = 60;
+    private static final int FAIL_CODE = 1;
 
-    private static final int countSecondInMinute = 60;
+    private Video() {
+    }
 
     public static int lengthVideo(String input) {
         int lengthInput = input.length();
-        if (lengthInput < 5) {
-            return -1;
+
+        final int MIN_LENGTH_INPUT = 5;
+        if (lengthInput < MIN_LENGTH_INPUT) {
+            return FAIL_CODE;
         }
-        if (input.charAt(lengthInput - 3) != ':') {
-            return -1;
+
+        final int OFFSET_TO_SEPARATOR = 3;
+        if (input.charAt(lengthInput - OFFSET_TO_SEPARATOR) != ':') {
+            return FAIL_CODE;
         }
         int countMinutes, countSecond;
 
         try {
             countSecond = Integer.parseInt(input.substring(lengthInput - 2, lengthInput));
-            if (countSecond > countSecondInMinute) {
+            if (countSecond > COUNT_SECOND_PER_MINUTE) {
                 throw new NumberFormatException();
             }
             countMinutes = Integer.parseInt(input.substring(0, lengthInput - 3));
-        } catch (NumberFormatException a) {
-            return -1;
+        } catch (NumberFormatException ex) {
+            return FAIL_CODE;
         }
 
-        return countSecond + countSecondInMinute * countMinutes;
+        return countSecond + COUNT_SECOND_PER_MINUTE * countMinutes;
     }
 }
