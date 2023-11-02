@@ -2,7 +2,7 @@ package edu.hw1;
 
 public class Video {
     private static final int COUNT_SECOND_PER_MINUTE = 60;
-    private static final int FAIL_CODE = 1;
+    private static final int FAIL_CODE = -1;
 
     private Video() {
     }
