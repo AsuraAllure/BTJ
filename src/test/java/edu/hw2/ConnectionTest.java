@@ -67,7 +67,7 @@ public class ConnectionTest {
         int flag1 = 0;
         for (int i = 0; i < 100; i += 1) {
             try {
-                executor.tryExecute("asd");
+                executor.updatePackages();
             } catch (ConnectionException con) {
                 flag1 += 1;
                 break;

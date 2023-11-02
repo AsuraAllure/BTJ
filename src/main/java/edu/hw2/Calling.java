@@ -1,6 +1,9 @@
 package edu.hw2;
 
 public class Calling {
+    private Calling() {
+    }
+
     public static CallingInfo call() {
         StackTraceElement[] trace = Thread.currentThread().getStackTrace();
         StackTraceElement el = trace[2];

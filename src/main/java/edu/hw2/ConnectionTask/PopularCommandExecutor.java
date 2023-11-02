@@ -2,7 +2,6 @@ package edu.hw2.ConnectionTask;
 
 import edu.hw2.ConnectionTask.Connections.Connection;
 import edu.hw2.ConnectionTask.Managers.ConnectionManager;
-import edu.hw2.ConnectionTask.Managers.FaultyConnectionManager;
 
 public final class PopularCommandExecutor {
     private final ConnectionManager manager;
@@ -11,17 +10,6 @@ public final class PopularCommandExecutor {
     public PopularCommandExecutor(ConnectionManager manager, int maxAttempts) {
         this.manager = manager;
         this.maxAttempts = maxAttempts;
-    }
-
-    public static void main(String[] vargs) {
-
-        var executor = new PopularCommandExecutor(new FaultyConnectionManager(), 5);
-        try {
-            executor.updatePackages();
-        } catch (ConnectionException conE) {
-            conE.printStackTrace();
-        }
-
     }
 
     public void updatePackages() {
