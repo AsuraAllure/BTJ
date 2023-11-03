@@ -9,5 +9,7 @@ public interface HangmanWords {
 
     String getRepresentWord();
 
+    String getGuessWord();
+
     boolean isGuessed();
 }

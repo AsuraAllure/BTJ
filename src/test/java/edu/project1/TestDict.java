@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestDict {
     @Test
-    public void testStandardDictionary(){
+    public void testStandardDictionary() {
         Dictionary dic = new StandartDictionary();
 
         Assertions.assertEquals("pizza", dic.getWord());

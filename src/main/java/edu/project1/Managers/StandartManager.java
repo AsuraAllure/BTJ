@@ -5,7 +5,7 @@ import edu.project1.GameEnum.GuessEnum;
 import edu.project1.HangmanWords.HangmanWords;
 import edu.project1.HangmanWords.StandartHangmanWord;
 import edu.project1.Representers.Representer;
-import edu.project1.Representers.StandartRepresenter;
+import edu.project1.Representers.VoidRepresenter;
 
 public class StandartManager implements GameManager {
     private final Representer repr;
@@ -14,13 +14,18 @@ public class StandartManager implements GameManager {
     private int curCountMiss = 0;
 
     public StandartManager() {
-        repr = new StandartRepresenter();
+        repr = new VoidRepresenter();
         maxCountMiss = 5;
     }
 
     public StandartManager(int countStep, Representer repr) {
         maxCountMiss = countStep;
         this.repr = repr;
+    }
+
+    @Override
+    public HangmanWords getWord() {
+        return hWord;
     }
 
     @Override

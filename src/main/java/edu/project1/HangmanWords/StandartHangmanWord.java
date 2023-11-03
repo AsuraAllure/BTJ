@@ -29,6 +29,11 @@ public class StandartHangmanWord implements HangmanWords {
     }
 
     @Override
+    public String getGuessWord() {
+        return guessWord;
+    }
+
+    @Override
     public String getRepresentWord() {
         StringBuilder str = new StringBuilder();
         for (var c : representWord) {
@@ -45,5 +50,23 @@ public class StandartHangmanWord implements HangmanWords {
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != StandartHangmanWord.class) {
+            return false;
+        }
+
+        return guessWord.equals(((HangmanWords) obj).getGuessWord());
+    }
+
+    @Override
+    public int hashCode() {
+        return guessWord.hashCode();
     }
 }
