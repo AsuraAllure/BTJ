@@ -3,11 +3,12 @@ package edu.project1.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StandartDictionary implements Dictionary{
+public class StandartDictionary implements Dictionary {
     // Словарь, где в соответствие слову ставится логическое значение
     // true - слово использовалось, false - не использовалось.
     private final Map<String, Boolean> dictionary;
-    public StandartDictionary(){
+
+    public StandartDictionary() {
         this.dictionary = new HashMap<>() {{
             put("pizza", false);
             put("cake", false);
@@ -17,11 +18,12 @@ public class StandartDictionary implements Dictionary{
 
     @Override
     public String getWord() throws EmptyDicionaryEception {
-        for(var key: dictionary.entrySet())
-            if (!key.getValue()){
+        for (var key : dictionary.entrySet()) {
+            if (!key.getValue()) {
                 dictionary.put(key.getKey(), true);
                 return key.getKey();
             }
+        }
         throw new EmptyDicionaryEception();
     }
 

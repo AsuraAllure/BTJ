@@ -1,3 +1,4 @@
 package edu.project1.Dictionary;
 
-public class EmptyDicionaryEception extends RuntimeException {}
+public class EmptyDicionaryEception extends RuntimeException {
+}

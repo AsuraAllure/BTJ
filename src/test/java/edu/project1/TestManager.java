@@ -6,7 +6,7 @@ import edu.project1.Representers.VoidRepresenter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class testManager {
+public class TestManager {
     @Test
     public void testStandartManager(){
         StandartManager st = new StandartManager(5, new VoidRepresenter());

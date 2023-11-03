@@ -1,6 +1,7 @@
 package edu.project1.Dictionary;
 
 public interface Dictionary {
-    public String getWord() throws EmptyDicionaryEception;
-    public void refresh();
+    String getWord() throws EmptyDicionaryEception;
+
+    void refresh();
 }

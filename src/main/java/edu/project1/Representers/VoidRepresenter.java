@@ -1,27 +1,39 @@
 package edu.project1.Representers;
 
-public class VoidRepresenter implements Representer{
+public class VoidRepresenter implements Representer {
     @Override
-    public void print(String s) {}
+    public void print(String s) {
+    }
 
     @Override
-    public void hitMessage() {}
-    @Override
-    public void missMessage(int countMiss, int maxCountMiss) {}
+    public void hitMessage() {
+    }
 
     @Override
-    public void guessMessage() {}
+    public void missMessage(int countMiss, int maxCountMiss) {
+    }
 
     @Override
-    public void loseMessage() {}
+    public void guessMessage() {
+    }
+
     @Override
-    public void winMessage() {}
+    public void loseMessage() {
+    }
+
     @Override
-    public void printReprWord(String s) {}
+    public void winMessage() {
+    }
+
+    @Override
+    public void printReprWord(String s) {
+    }
+
     @Override
     public String input() {
         return null;
     }
+
     @Override
     public void close() throws Exception {
 

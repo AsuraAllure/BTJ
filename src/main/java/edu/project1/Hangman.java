@@ -7,6 +7,7 @@ import edu.project1.Managers.GameManager;
 import edu.project1.Managers.StandartManager;
 import edu.project1.Representers.Representer;
 import edu.project1.Representers.StandartRepresenter;
+
 import java.util.Objects;
 
 public class Hangman implements AutoCloseable {
@@ -14,22 +15,23 @@ public class Hangman implements AutoCloseable {
     private final Dictionary dictionary;
     private final Representer representer;
 
-    public Hangman(GameManager manager, Dictionary dict, Representer repr){
+    public Hangman(GameManager manager, Dictionary dict, Representer repr) {
         this.manager = manager;
         this.dictionary = dict;
         this.representer = repr;
     }
-    public Hangman(){
+
+    public Hangman() {
         this.dictionary = new StandartDictionary();
         this.representer = new StandartRepresenter();
         this.manager = new StandartManager(5, this.representer);
     }
 
-    public void start(){
+    public void start() {
         representer.print("It is Hangman game!");
         manager.setWord(dictionary.getWord());
         GameState state = GameState.GAME;
-        do{
+        do {
             representer.guessMessage();
             String inp = representer.input();
             if (Objects.equals(inp, "EXIT")) {
@@ -41,7 +43,7 @@ public class Hangman implements AutoCloseable {
                 continue;
             }
             state = manager.guessLetter(inp.charAt(0));
-        }while(state == GameState.GAME );
+        } while (state == GameState.GAME);
     }
 
     @Override
