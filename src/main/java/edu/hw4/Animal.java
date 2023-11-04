@@ -9,12 +9,18 @@ public record Animal(
     int weight,
     boolean bites
 ) {
+    public static final int COUNT_PAWS_CAT = 4;
+    public static final int COUNT_PAWS_DOG = 4;
+    public static final int COUNT_PAWS_BIRD = 2;
+    public static final int COUNT_PAWS_FISH = 0;
+    public static final int COUNT_PAWS_SPIDER = 8;
     public int paws() {
         return switch (type) {
-            case CAT, DOG -> 4;
-            case BIRD -> 2;
-            case FISH -> 0;
-            case SPIDER -> 8;
+            case CAT -> COUNT_PAWS_CAT;
+            case DOG -> COUNT_PAWS_DOG;
+            case BIRD -> COUNT_PAWS_BIRD;
+            case FISH -> COUNT_PAWS_FISH;
+            case SPIDER -> COUNT_PAWS_SPIDER;
         };
     }
 

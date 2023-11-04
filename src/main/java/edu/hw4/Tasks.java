@@ -118,9 +118,10 @@ public class Tasks {
     }
 
     public static List<Animal> task11(List<Animal> animals) {
+        final int REQUIRED_HEIGHT = 100;
         return animals
             .stream()
-            .filter((r) -> r.bites() && r.height() > 100)
+            .filter((r) -> r.bites() && r.height() > REQUIRED_HEIGHT)
             .toList();
     }
 
