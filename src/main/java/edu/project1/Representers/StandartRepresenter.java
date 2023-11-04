@@ -1,56 +1,61 @@
 package edu.project1.Representers;
 
-import java.io.PrintStream;
-import java.util.Scanner;
+import edu.project1.Representers.Readers.Reader;
+import edu.project1.Representers.Writers.Writer;
+import edu.project1.Representers.Readers.ConsoleReader;
+import edu.project1.Representers.Writers.ConsoleWriter;
 
 public class StandartRepresenter implements Representer {
-    private final PrintStream out = System.out;
-    private final Scanner in = new Scanner(System.in);
+    private final Writer out;
+    private final Reader in;
+    public StandartRepresenter(Writer out, Reader s) {
+        this.out = out;
+        this.in = s;
+    }
+
+    public StandartRepresenter() {
+        this.out = new ConsoleWriter();
+        this.in = new ConsoleReader();
+    }
 
     @Override
     public void print(String s) {
-        out.println(s);
+        out.print(s);
     }
 
     @Override
     public void hitMessage() {
-        out.println("Hit!");
+        out.print("Hit!");
     }
 
     @Override
     public void missMessage(int countMiss, int maxCount) {
-        out.println("Missed, mistake " + countMiss +
-            " out of " + maxCount + ".");
+        out.print("Missed, mistake " + countMiss
+            + " out of " + maxCount + ".");
     }
 
     @Override
     public void guessMessage() {
-        out.println("Guess a letter:");
+        out.print("Guess a letter:");
     }
 
     @Override
     public void loseMessage() {
-        out.println("You lost!");
+        out.print("You lost!");
     }
 
     @Override
     public void winMessage() {
-        out.println("You won!");
+        out.print("You won!");
     }
 
     @Override
     public void printReprWord(String s) {
-        out.println("The word: " + s);
+        out.print("The word: " + s);
     }
 
     @Override
     public String input() {
-        return in.next();
-    }
-
-    @Override
-    public void close() throws Exception {
-        in.close();
-        out.close();
+        return in.read();
     }
 }

@@ -6,14 +6,16 @@ import edu.project1.HangmanWords.StandartHangmanWord;
 import edu.project1.Managers.StandartManager;
 import edu.project1.Managers.TooLongWordException;
 import edu.project1.Managers.TooSmallWordException;
-import edu.project1.Representers.VoidRepresenter;
+import edu.project1.Representers.Readers.VoidReader;
+import edu.project1.Representers.StandartRepresenter;
+import edu.project1.Representers.Writers.VoidWriter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TestManager {
     @Test
     public void testGuessLetter() {
-        StandartManager st = new StandartManager(5, new VoidRepresenter());
+        StandartManager st = new StandartManager(5, new StandartRepresenter(new VoidWriter(), new VoidReader()));
         st.setWord("pizza");
         Assertions.assertEquals(GameState.GAME, st.guessLetter('p'));
         Assertions.assertEquals(GameState.GAME, st.guessLetter('q'));
@@ -54,7 +56,7 @@ public class TestManager {
         HangmanWords optHWord = new StandartHangmanWord("sdfgj");
         HangmanWords longHWord = new StandartHangmanWord("afgjkurtteryutukyhg");
 
-        StandartManager manager = new StandartManager(5, new VoidRepresenter());
+        StandartManager manager = new StandartManager(5, new StandartRepresenter(new VoidWriter(), new VoidReader()));
 
         manager.setWord(optHWord);
         Assertions.assertEquals(optHWord, manager.getWord());

@@ -1,6 +1,6 @@
 package edu.project1.Representers;
 
-public interface Representer extends AutoCloseable {
+public interface Representer {
     void print(String s);
 
     void hitMessage();
