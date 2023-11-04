@@ -1,7 +1,6 @@
 package edu.hw4;
 
 import edu.hw4.Errors.ValidateError;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;

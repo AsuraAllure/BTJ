@@ -4,7 +4,6 @@ import edu.hw4.Errors.HeightError;
 import edu.hw4.Errors.NameError;
 import edu.hw4.Errors.ValidateError;
 import edu.hw4.Errors.WeightError;
-
 import java.util.LinkedList;
 import java.util.List;
 
