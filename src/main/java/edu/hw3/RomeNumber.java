@@ -6,12 +6,6 @@ import java.util.List;
 
 public class RomeNumber {
 
-    public static void main(String[] args) {
-        System.out.println(toRomeNumber(900));
-        System.out.println();
-
-    }
-
     public static String toRomeNumber(int arabianNumber) {
         StringBuilder romeNumber = new StringBuilder();
         final ArrayList<AbstractMap.SimpleEntry<String, Integer>> dict = new ArrayList<>(
