@@ -1,12 +1,9 @@
 package edu.project1;
 
 import edu.project1.Dictionary.Dictionary;
-import edu.project1.Dictionary.StandartDictionary;
 import edu.project1.GameEnum.GameState;
 import edu.project1.Managers.GameManager;
-import edu.project1.Managers.StandartManager;
 import edu.project1.Representers.Representer;
-import edu.project1.Representers.StandartRepresenter;
 import java.util.Objects;
 
 public class Hangman {
@@ -19,17 +16,6 @@ public class Hangman {
         this.manager.setRepresenter(repr);
         this.dictionary = dict;
         this.representer = repr;
-    }
-
-    public Hangman() {
-        this.dictionary = new StandartDictionary();
-        this.representer = new StandartRepresenter();
-        this.manager = new StandartManager(StandartManager.STANDART_COUNT_ERROR, this.representer);
-    }
-
-    public static void main(String[] args) {
-        Hangman h = new Hangman();
-        h.start();
     }
 
     public void start() {

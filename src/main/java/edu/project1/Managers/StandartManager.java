@@ -12,8 +12,8 @@ import edu.project1.Representers.Writers.VoidWriter;
 public class StandartManager implements GameManager {
     public static final int STANDART_COUNT_ERROR = 5;
     private final int maxCountMiss;
-    private final int MAX_LENGTH_WORD = 12;
-    private final int MIN_LENGTH_WORD = 4;
+    private static final int MAX_LENGTH_WORD = 12;
+    private static final int MIN_LENGTH_WORD = 4;
     private Representer repr;
     private HangmanWords hWord;
     private int curCountMiss = 0;

@@ -2,21 +2,16 @@ package edu.project1.Representers;
 
 import edu.project1.Representers.Readers.Reader;
 import edu.project1.Representers.Writers.Writer;
-import edu.project1.Representers.Readers.ConsoleReader;
-import edu.project1.Representers.Writers.ConsoleWriter;
 
 public class StandartRepresenter implements Representer {
     private final Writer out;
     private final Reader in;
+
     public StandartRepresenter(Writer out, Reader s) {
         this.out = out;
         this.in = s;
     }
 
-    public StandartRepresenter() {
-        this.out = new ConsoleWriter();
-        this.in = new ConsoleReader();
-    }
 
     @Override
     public void print(String s) {
