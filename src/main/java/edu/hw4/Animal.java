@@ -14,6 +14,7 @@ public record Animal(
     public static final int COUNT_PAWS_BIRD = 2;
     public static final int COUNT_PAWS_FISH = 0;
     public static final int COUNT_PAWS_SPIDER = 8;
+
     public int paws() {
         return switch (type) {
             case CAT -> COUNT_PAWS_CAT;
