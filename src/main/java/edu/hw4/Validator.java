@@ -4,6 +4,7 @@ import edu.hw4.Errors.HeightError;
 import edu.hw4.Errors.NameError;
 import edu.hw4.Errors.ValidateError;
 import edu.hw4.Errors.WeightError;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,9 +12,9 @@ public class Validator {
     public static final int MIN_LENGTH_NAME = 3;
     public static final int MAX_LENGTH_NAME = 15;
     public static final int MIN_HEIGHT = 0;
-    public static final int MAX_HEIGHT = 60;
+    public static final int MAX_HEIGHT = 600;
     public static final int MIN_WEIGHT = 0;
-    public static final int MAX_WEIGHT = 15;
+    public static final int MAX_WEIGHT = 100;
 
     private Validator() {
     }
