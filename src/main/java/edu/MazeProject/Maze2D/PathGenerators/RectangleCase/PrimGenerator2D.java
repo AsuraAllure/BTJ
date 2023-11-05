@@ -49,14 +49,14 @@ public class PrimGenerator2D implements RectangleMazeGenerator {
 
         while (listOfWalls.size() != 0) {
             WallsNode nextWall = listOfWalls.get(rng.nextInt(listOfWalls.size()));
+            listOfWalls.remove(nextWall);
 
             CordNode next = nextWall.cordNextNode();
             CordNode prev = new CordNode(nextWall.i, nextWall.j);
 
-            mazeFlags[next.i][next.j] = true;
-            listOfWalls.remove(nextWall);
 
-            if (mazeFlags[next.i][next.j]) {
+
+            if (!mazeFlags[next.i][next.j]) {
                 switch (next.i - prev.i) {
                     case 1:
                         maze[prev.i][prev.j].setBot(new Pass());
@@ -71,7 +71,6 @@ public class PrimGenerator2D implements RectangleMazeGenerator {
                         switch (next.j - prev.j) {
                             case 1 -> {
                                 maze[prev.i][prev.j].setRight(new Pass());
-
                                 maze[next.i][next.j].setLeft(new Pass());
 
                             }
@@ -100,6 +99,8 @@ public class PrimGenerator2D implements RectangleMazeGenerator {
                     listOfWalls.add(new WallsNode(next.i, next.j, Direction.TOP));
                 }
             }
+
+            mazeFlags[next.i][next.j] = true;
         }
 
         return new RectangleMazeStructures(maze);
