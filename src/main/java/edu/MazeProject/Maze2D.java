@@ -1,8 +1,10 @@
 package edu.MazeProject;
 
+import edu.MazeProject.Elements2DMaze.CordNode;
 import edu.MazeProject.MazeGenerators.MazeGenerator;
 import edu.MazeProject.Representer.StandartMazeRepresenter;
 import edu.MazeProject.Structures.RectangleMazeStructures;
+import java.util.List;
 
 public class Maze2D {
     private final RectangleMazeStructures mazeStructures;
@@ -11,8 +13,10 @@ public class Maze2D {
         representer = repr;
         mazeStructures = generator2D.generate();
     }
-
     public void print(){
         representer.print(mazeStructures);
+    }
+    public void printPath(List<CordNode> l){
+        representer.printPath(mazeStructures, l);
     }
 }
