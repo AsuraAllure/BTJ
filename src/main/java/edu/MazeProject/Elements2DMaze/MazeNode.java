@@ -1,12 +1,12 @@
-package edu.MazeProject.Maze2D.Elements2DMaze;
+package edu.MazeProject.Elements2DMaze;
 
-public class RectangleMazeNode2D {
+public class MazeNode {
     private NodeElements top;
     private NodeElements left;
     private NodeElements bot;
     private NodeElements right;
 
-    public RectangleMazeNode2D(
+    public MazeNode(
         NodeElements top,
         NodeElements left,
         NodeElements bot,
