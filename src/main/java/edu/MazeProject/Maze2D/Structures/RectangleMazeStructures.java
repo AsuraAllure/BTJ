@@ -19,24 +19,24 @@ public class RectangleMazeStructures implements Structures2D {
             for (var el : row){
                 Wall w = new Wall();
                 if (el.top().equals(w))
-                    level1.append(" - ");
+                    level1.append("---");
                 else
-                    level1.append(" o ");
+                    level1.append("|o|");
 
                 if (el.left().equals(w))
-                    level2.append("|x");
+                    level2.append("|x ");
                 else
-                    level2.append("ox");
+                    level2.append("x");
 
                 if (el.right().equals(w))
-                    level2.append("|");
+                    level2.append("| ");
                 else
-                    level2.append(" o");
+                    level2.append("");
 
                 if (el.bot().equals(w))
-                    level3.append(" - ");
+                    level3.append("---");
                 else
-                    level3.append(" o ");
+                    level3.append("|o|");
             }
 
             result.append(level1);
