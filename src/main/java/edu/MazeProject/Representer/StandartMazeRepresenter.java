@@ -19,6 +19,7 @@ public class StandartMazeRepresenter {
         StringBuilder result = new StringBuilder();
         Configuration conf = maze.getConfig();
         char fillChar;
+        final String lineDown = "| |";
 
         for (int i = 0; i < conf.dim1(); i++) {
             StringBuilder level1 = new StringBuilder();
@@ -37,7 +38,7 @@ public class StandartMazeRepresenter {
                 if (el.getTop().getClass().equals(Wall.class)) {
                     level1.append("---");
                 } else {
-                    level1.append("| |");
+                    level1.append(lineDown);
                 }
 
                 if (el.getLeft().getClass().equals(Wall.class)) {
@@ -55,7 +56,7 @@ public class StandartMazeRepresenter {
                 if (el.getBot().getClass().equals(Wall.class)) {
                     level3.append("|_|");
                 } else {
-                    level3.append("| |");
+                    level3.append(lineDown);
                 }
             }
             result.append(level1);
