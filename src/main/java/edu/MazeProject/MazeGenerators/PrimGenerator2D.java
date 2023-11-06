@@ -4,6 +4,7 @@ import edu.MazeProject.Elements2DMaze.CordNode;
 import edu.MazeProject.Elements2DMaze.MazeNode;
 import edu.MazeProject.Elements2DMaze.Pass;
 import edu.MazeProject.Elements2DMaze.Wall;
+import edu.MazeProject.MazeGenerators.WallsNode.Direction;
 import edu.MazeProject.Structures.RectangleMazeStructures;
 import java.util.ArrayList;
 import java.util.Random;
@@ -54,7 +55,7 @@ public class PrimGenerator2D implements MazeGenerator {
             listOfWalls.remove(nextWall);
 
             CordNode next = nextWall.cordNextNode();
-            CordNode prev = nextWall.cord;
+            CordNode prev = nextWall.cord();
 
             // break the walls
             if (!mazeFlags[next.i()][next.j()]) {
@@ -109,21 +110,4 @@ public class PrimGenerator2D implements MazeGenerator {
         return new RectangleMazeStructures(maze, config);
     }
 
-    private enum Direction {
-        TOP,
-        BOT,
-        LEFT,
-        RIGHT
-    }
-
-    private record WallsNode(CordNode cord, Direction dir) {
-        public CordNode cordNextNode() {
-            return switch (dir) {
-                case TOP -> new CordNode(cord.i() - 1, cord.j());
-                case BOT -> new CordNode(cord.i() + 1, cord.j());
-                case LEFT -> new CordNode(cord.i(), cord.j() - 1);
-                case RIGHT -> new CordNode(cord.i(), cord.j() + 1);
-            };
-        }
-    }
 }
