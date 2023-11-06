@@ -13,6 +13,11 @@ public class Maze2D {
         representer = repr;
         mazeStructures = generator2D.generate();
     }
+
+    public RectangleMazeStructures getMazeStructures() {
+        return mazeStructures;
+    }
+
     public void print(){
         representer.print(mazeStructures);
     }

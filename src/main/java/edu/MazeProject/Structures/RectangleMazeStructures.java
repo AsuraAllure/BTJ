@@ -1,5 +1,6 @@
 package edu.MazeProject.Structures;
 
+import edu.MazeProject.Elements2DMaze.CordNode;
 import edu.MazeProject.Elements2DMaze.MazeNode;
 import edu.MazeProject.Elements2DMaze.Wall;
 import edu.MazeProject.MazeGenerators.Configuration;
@@ -18,6 +19,9 @@ public class RectangleMazeStructures implements Iterable<MazeNode[]> {
 
     public Configuration getConfig() {
         return config;
+    }
+    public MazeNode get(CordNode c){
+        return maze[c.i()][c.j()];
     }
 
     @NotNull
