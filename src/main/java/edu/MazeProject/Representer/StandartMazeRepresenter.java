@@ -10,48 +10,53 @@ import java.util.List;
 
 public class StandartMazeRepresenter {
     private final PrintStream outputStream;
+
     public StandartMazeRepresenter(PrintStream out) {
         outputStream = out;
     }
 
-    public void printPath(RectangleMazeStructures maze, List<CordNode> path){
+    public void printPath(RectangleMazeStructures maze, List<CordNode> path) {
         StringBuilder result = new StringBuilder();
         Configuration conf = maze.getConfig();
         char fillChar;
 
-
-        for(int i = 0; i < conf.dim1(); i++) {
+        for (int i = 0; i < conf.dim1(); i++) {
             StringBuilder level1 = new StringBuilder();
             StringBuilder level2 = new StringBuilder();
             StringBuilder level3 = new StringBuilder();
 
-            for (int j = 0; j < conf.dim2(); j++){
-                if (path.contains(new CordNode(i,j)))
+            for (int j = 0; j < conf.dim2(); j++) {
+                if (path.contains(new CordNode(i, j))) {
                     fillChar = '*';
-                else
+                } else {
                     fillChar = ' ';
+                }
 
                 var el = maze.get(i, j);
 
-                if (el.getTop().getClass().equals(Wall.class))
+                if (el.getTop().getClass().equals(Wall.class)) {
                     level1.append("---");
-                else
+                } else {
                     level1.append("| |");
+                }
 
-                if (el.getLeft().getClass().equals(Wall.class))
+                if (el.getLeft().getClass().equals(Wall.class)) {
                     level2.append("|").append(fillChar);
-                else
+                } else {
                     level2.append(" ").append(fillChar);
+                }
 
-                if (el.getRight().getClass().equals(Wall.class))
+                if (el.getRight().getClass().equals(Wall.class)) {
                     level2.append("|");
-                else
+                } else {
                     level2.append(" ");
+                }
 
-                if (el.getBot().getClass().equals(Wall.class))
+                if (el.getBot().getClass().equals(Wall.class)) {
                     level3.append("|_|");
-                else
+                } else {
                     level3.append("| |");
+                }
             }
             result.append(level1);
             result.append('\n');
@@ -64,18 +69,17 @@ public class StandartMazeRepresenter {
         outputStream.println(res);
     }
 
-
     public void print(RectangleMazeStructures maze) {
         StringBuilder result = new StringBuilder();
         Configuration c = maze.getConfig();
         String floor = "___".repeat(c.dim2());
         Configuration conf = maze.getConfig();
 
-        for (int i=0; i < conf.dim1(); i++) {
+        for (int i = 0; i < conf.dim1(); i++) {
 
             StringBuilder level2 = new StringBuilder();
 
-            for (int j =0; j < conf.dim2(); j++) {
+            for (int j = 0; j < conf.dim2(); j++) {
                 MazeNode el = maze.get(i, j);
                 if (el.getLeft().getClass().equals(Wall.class)) {
                     if (el.getBot().getClass().equals(Wall.class)) {
@@ -83,11 +87,11 @@ public class StandartMazeRepresenter {
                     } else {
                         level2.append("| ");
                     }
-                } else
-                    if (el.getBot().getClass().equals(Wall.class))
-                        level2.append("__");
-                    else
-                        level2.append("_ ");
+                } else if (el.getBot().getClass().equals(Wall.class)) {
+                    level2.append("__");
+                } else {
+                    level2.append("_ ");
+                }
 
                 if (el.getRight().getClass().equals(Wall.class)) {
                     level2.append("|");

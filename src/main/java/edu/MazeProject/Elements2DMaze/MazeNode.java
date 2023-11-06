@@ -19,17 +19,19 @@ public class MazeNode {
     }
 
     @Override
-    public boolean equals(Object obj){
-        if (obj.getClass() != MazeNode.class)
+    public boolean equals(Object obj) {
+        if (obj.getClass() != MazeNode.class) {
             return false;
+        }
         MazeNode another = (MazeNode) obj;
         return bot.equals(another.bot)
             && top.equals(another.top)
             && left.equals(another.left)
             && right.equals(another.right);
     }
+
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return top.hashCode()
             ^ bot.hashCode()
             ^ left.hashCode()
