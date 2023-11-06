@@ -10,8 +10,6 @@ import java.util.List;
 
 public class StandartMazeRepresenter {
     private final PrintStream outputStream;
-    private char centerNode = ' ';
-
     public StandartMazeRepresenter(PrintStream out) {
         outputStream = out;
     }
@@ -62,7 +60,8 @@ public class StandartMazeRepresenter {
             result.append(level3);
             result.append('\n');
         }
-        System.out.println(result);
+        String res = result.toString();
+        outputStream.println(res);
     }
 
 

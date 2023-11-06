@@ -10,7 +10,7 @@ import edu.MazeProject.Structures.RectangleMazeStructures;
 
 public class Main {
     public static void main(String[] s) {
-        PrimGenerator2D gen = new PrimGenerator2D(new Configuration(4, 5, 1201534));
+        PrimGenerator2D gen = new PrimGenerator2D(new Configuration(4, 4, 102));
 
         RectangleMazeStructures str = gen.generate();
         DFSSolver solv = new DFSSolver();
@@ -18,7 +18,7 @@ public class Main {
         StandartMazeRepresenter rep = new StandartMazeRepresenter(System.out);
         rep.print(str);
 
-        rep.printPath(str, solv.solve(str, new CordNode(0, 0), new CordNode(3, 4)));
-        rep.printPath(str ,solv2.solve(str, new CordNode(0, 0), new CordNode(3, 4)));
+        rep.printPath(str, solv.solve(str, new CordNode(0, 0), new CordNode(3, 3)));
+        rep.printPath(str ,solv2.solve(str, new CordNode(0, 0), new CordNode(3, 3)));
     }
 }
