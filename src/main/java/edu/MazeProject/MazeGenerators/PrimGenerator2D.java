@@ -59,49 +59,37 @@ public class PrimGenerator2D implements MazeGenerator {
 
             // break the walls
             if (!mazeFlags[next.i()][next.j()]) {
-                switch (next.i() - prev.i()) {
-                    case 1:
-                        maze[prev.i()][prev.j()].setBot(new Pass());
-                        maze[next.i()][next.j()].setTop(new Pass());
-                        break;
-                    case -1:
-                        maze[prev.i()][prev.j()].setTop(new Pass());
-                        maze[next.i()][next.j()].setBot(new Pass());
-
-                        break;
-                    default:
-                        switch (next.j() - prev.j()) {
-                            case 1 -> {
-                                maze[prev.i()][prev.j()].setRight(new Pass());
-                                maze[next.i()][next.j()].setLeft(new Pass());
-
-                            }
-                            case -1 -> {
-                                maze[prev.i()][prev.j()].setLeft(new Pass());
-                                maze[next.i()][next.j()].setRight(new Pass());
-                            }
-                            default -> {
-                            }
-                        }
+                if (next.i() - prev.i() == 1) {
+                    maze[prev.i()][prev.j()].setBot(new Pass());
+                    maze[next.i()][next.j()].setTop(new Pass());
+                } else if (next.i() - prev.i() == -1) {
+                    maze[prev.i()][prev.j()].setTop(new Pass());
+                    maze[next.i()][next.j()].setBot(new Pass());
+                } else if (next.j() - prev.j() == 1) {
+                    maze[prev.i()][prev.j()].setRight(new Pass());
+                    maze[next.i()][next.j()].setLeft(new Pass());
+                } else {
+                    maze[prev.i()][prev.j()].setLeft(new Pass());
+                    maze[next.i()][next.j()].setRight(new Pass());
                 }
+            }
 
-                // Add walls Node with cord 'next'
+            // Add walls Node with cord 'next'
 
-                if (next.j() + 1 < config.dim2() && !mazeFlags[next.i()][next.j() + 1]) {
-                    listOfWalls.add(new WallsNode(next, Direction.RIGHT));
-                }
+            if (next.j() + 1 < config.dim2() && !mazeFlags[next.i()][next.j() + 1]) {
+                listOfWalls.add(new WallsNode(next, Direction.RIGHT));
+            }
 
-                if (next.j() != 0 && !mazeFlags[next.i()][next.j() - 1]) {
-                    listOfWalls.add(new WallsNode(next, Direction.LEFT));
-                }
+            if (next.j() != 0 && !mazeFlags[next.i()][next.j() - 1]) {
+                listOfWalls.add(new WallsNode(next, Direction.LEFT));
+            }
 
-                if (next.i() + 1 < config.dim1() && !mazeFlags[next.i() + 1][next.j()]) {
-                    listOfWalls.add(new WallsNode(next, Direction.BOT));
-                }
+            if (next.i() + 1 < config.dim1() && !mazeFlags[next.i() + 1][next.j()]) {
+                listOfWalls.add(new WallsNode(next, Direction.BOT));
+            }
 
-                if (next.i() != 0 && !mazeFlags[next.i() - 1][next.j()]) {
-                    listOfWalls.add(new WallsNode(next, Direction.TOP));
-                }
+            if (next.i() != 0 && !mazeFlags[next.i() - 1][next.j()]) {
+                listOfWalls.add(new WallsNode(next, Direction.TOP));
             }
 
             mazeFlags[next.i()][next.j()] = true;
@@ -109,5 +97,4 @@ public class PrimGenerator2D implements MazeGenerator {
 
         return new RectangleMazeStructures(maze, config);
     }
-
 }
