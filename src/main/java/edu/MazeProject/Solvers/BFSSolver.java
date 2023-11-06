@@ -16,6 +16,7 @@ public class BFSSolver {
         if(start.equals(finish))
             return List.of(start);
 
+        // map: end -> start. Moving from start to finish.
         HashMap<CordNode, CordNode> pathBetweenNode = new HashMap<>();
         ArrayDeque<PairCord> potential = new ArrayDeque<>();
 
@@ -32,25 +33,25 @@ public class BFSSolver {
 
             MazeNode node = maze.get(cordNode);
             CordNode nextNode;
-            if (node.getBot().equals(new Pass())) {
+            if (node.getBot().getClass().equals(Pass.class)) {
                 nextNode = new CordNode(cordNode.i() + 1, cordNode.j());
                 if (!pathBetweenNode.containsKey(nextNode))
                     potential.add(new PairCord(cordNode, nextNode));
             }
 
-            if (node.getLeft().equals(new Pass())) {
+            if (node.getLeft().getClass().equals(Pass.class)) {
                 nextNode = new CordNode(cordNode.i(), cordNode.j() - 1);
                 if (!pathBetweenNode.containsKey(nextNode))
                     potential.add(new PairCord(cordNode, nextNode));
             }
 
-            if (node.getRight().equals(new Pass())) {
+            if (node.getRight().getClass().equals(Pass.class)) {
                 nextNode = new CordNode(cordNode.i(), cordNode.j()+1);
                 if (!pathBetweenNode.containsKey(nextNode))
                     potential.add(new PairCord(cordNode, nextNode));
             }
 
-            if (node.getTop().equals(new Pass())){
+            if (node.getTop().getClass().equals(Pass.class)){
                 nextNode = new CordNode(cordNode.i() - 1, cordNode.j());
                 if (!pathBetweenNode.containsKey(nextNode))
                     potential.add(new PairCord(cordNode, nextNode));

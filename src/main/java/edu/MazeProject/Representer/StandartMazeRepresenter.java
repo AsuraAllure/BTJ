@@ -1,6 +1,7 @@
 package edu.MazeProject.Representer;
 
 import edu.MazeProject.Elements2DMaze.CordNode;
+import edu.MazeProject.Elements2DMaze.MazeNode;
 import edu.MazeProject.Elements2DMaze.Wall;
 import edu.MazeProject.MazeGenerators.Configuration;
 import edu.MazeProject.Structures.RectangleMazeStructures;
@@ -17,44 +18,43 @@ public class StandartMazeRepresenter {
 
     public void printPath(RectangleMazeStructures maze, List<CordNode> path){
         StringBuilder result = new StringBuilder();
+        Configuration conf = maze.getConfig();
         char fillChar;
-        int i =0;
 
-        for(var row : maze) {
+
+        for(int i = 0; i < conf.dim1(); i++) {
             StringBuilder level1 = new StringBuilder();
             StringBuilder level2 = new StringBuilder();
             StringBuilder level3 = new StringBuilder();
-            int j = 0;
-            for (var el : row){
+
+            for (int j = 0; j < conf.dim2(); j++){
                 if (path.contains(new CordNode(i,j)))
                     fillChar = '*';
                 else
                     fillChar = ' ';
 
-                Wall w = new Wall();
+                var el = maze.get(i, j);
 
-                if (el.getTop().equals(w))
+                if (el.getTop().getClass().equals(Wall.class))
                     level1.append("---");
                 else
                     level1.append("| |");
 
-                if (el.getLeft().equals(w))
-                    level2.append("|" + fillChar);
+                if (el.getLeft().getClass().equals(Wall.class))
+                    level2.append("|").append(fillChar);
                 else
-                    level2.append(" "+fillChar);
+                    level2.append(" ").append(fillChar);
 
-                if (el.getRight().equals(w))
+                if (el.getRight().getClass().equals(Wall.class))
                     level2.append("|");
                 else
                     level2.append(" ");
 
-                if (el.getBot().equals(w))
+                if (el.getBot().getClass().equals(Wall.class))
                     level3.append("|_|");
                 else
                     level3.append("| |");
-                j++;
             }
-            i++;
             result.append(level1);
             result.append('\n');
             result.append(level2);
@@ -66,32 +66,31 @@ public class StandartMazeRepresenter {
     }
 
 
-
     public void print(RectangleMazeStructures maze) {
         StringBuilder result = new StringBuilder();
         Configuration c = maze.getConfig();
         String floor = "___".repeat(c.dim2());
+        Configuration conf = maze.getConfig();
 
-        for (var row : maze) {
+        for (int i=0; i < conf.dim1(); i++) {
 
             StringBuilder level2 = new StringBuilder();
 
-            for (var el : row) {
-                Wall w = new Wall();
-
-                if (el.getLeft().equals(w)) {
-                    if (el.getBot().equals(w)) {
+            for (int j =0; j < conf.dim2(); j++) {
+                MazeNode el = maze.get(i, j);
+                if (el.getLeft().getClass().equals(Wall.class)) {
+                    if (el.getBot().getClass().equals(Wall.class)) {
                         level2.append("|_");
                     } else {
                         level2.append("| ");
                     }
                 } else
-                    if (el.getBot().equals(w))
+                    if (el.getBot().getClass().equals(Wall.class))
                         level2.append("__");
                     else
                         level2.append("_ ");
 
-                if (el.getRight().equals(w)) {
+                if (el.getRight().getClass().equals(Wall.class)) {
                     level2.append("|");
                 } else {
                     level2.append("_");

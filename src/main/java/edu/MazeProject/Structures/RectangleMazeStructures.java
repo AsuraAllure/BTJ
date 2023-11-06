@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class RectangleMazeStructures implements Iterable<MazeNode[]> {
+public class RectangleMazeStructures {
 
     private final Configuration config;
     private final MazeNode[][] maze;
@@ -16,17 +16,14 @@ public class RectangleMazeStructures implements Iterable<MazeNode[]> {
         config = c;
         maze = m;
     }
-
     public Configuration getConfig() {
         return config;
     }
     public MazeNode get(CordNode c){
         return maze[c.i()][c.j()];
     }
-
-    @NotNull
-    @Override
-    public Iterator<MazeNode[]> iterator() {
-        return Arrays.stream(maze).iterator();
+    public MazeNode get(int i, int j){
+        return maze[i][j];
     }
+
 }
