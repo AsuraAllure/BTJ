@@ -40,6 +40,9 @@ public class TestRectangleStructures {
         };
 
         RectangleMazeStructures str = new RectangleMazeStructures(mz, new Configuration(2, 3, 16));
+
+        Assertions.assertEquals(mz, str.getMaze());
+
         Assertions.assertEquals(n00, str.get(0, 0));
         Assertions.assertEquals(n01, str.get(0, 1));
         Assertions.assertEquals(n02, str.get(0, 2));

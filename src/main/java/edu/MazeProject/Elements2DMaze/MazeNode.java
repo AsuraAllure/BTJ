@@ -18,6 +18,24 @@ public class MazeNode {
         this.left = left;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        if (obj.getClass() != MazeNode.class)
+            return false;
+        MazeNode another = (MazeNode) obj;
+        return bot.equals(another.bot)
+            && top.equals(another.top)
+            && left.equals(another.left)
+            && right.equals(another.right);
+    }
+    @Override
+    public int hashCode(){
+        return top.hashCode()
+            ^ bot.hashCode()
+            ^ left.hashCode()
+            ^ right.hashCode();
+    }
+
     public NodeElements getRight() {
         return right;
     }

@@ -16,6 +16,9 @@ public class RectangleMazeStructures {
         config = c;
         maze = m;
     }
+    public MazeNode[][] getMaze(){
+        return maze;
+    }
     public Configuration getConfig() {
         return config;
     }
