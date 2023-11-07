@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AscDescSort {
-    public static void main(String[] args) {
+    private AscDescSort() {
     }
 
     public static Object[] parseContact(String[] rawContacts, String order) {

@@ -1,6 +1,8 @@
 package edu.hw3;
 
 public class Atbash {
+    private Atbash() {
+    }
 
     public static String encode(String source) {
         StringBuilder encodeStr = new StringBuilder();
@@ -17,7 +19,4 @@ public class Atbash {
         return encodeStr.toString();
     }
 
-    public static void main(String[] args) {
-
-    }
 }

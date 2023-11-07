@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RomeNumber {
+    private RomeNumber() {
+    }
 
-    public static String toRomeNumber(int arabianNumber) {
+    public static String toRomeNumber(int arabNumber) {
+
+        int arabianNumber = arabNumber;
         StringBuilder romeNumber = new StringBuilder();
         final ArrayList<AbstractMap.SimpleEntry<String, Integer>> dict = new ArrayList<>(
             List.of(

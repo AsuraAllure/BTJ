@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Stack;
 
 public class Cluster {
+    private Cluster() {
+
+    }
+
     public static String[] clusterize(String source) {
         if (source.length() == 0) {
             return new String[0];
@@ -20,6 +24,8 @@ public class Cluster {
             switch (c) {
                 case '(' -> stack.push('(');
                 case ')' -> stack.pop();
+                default -> {
+                }
             }
 
             if (stack.empty()) {
