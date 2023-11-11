@@ -1,8 +1,6 @@
-package edu.hw3;
+package edu.hw3.task6;
 
-import edu.hw3.StockMarket.AsuraStockMarket;
-import edu.hw3.StockMarket.StockMarket;
-import edu.hw3.StockMarket.StockMarket.Stock;
+import edu.hw3.task6.StockMarket.Stock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

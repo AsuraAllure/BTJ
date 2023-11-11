@@ -1,4 +1,4 @@
-package edu.hw3.StockMarket;
+package edu.hw3.task6;
 
 import java.util.PriorityQueue;
 
@@ -10,11 +10,6 @@ public class AsuraStockMarket implements StockMarket {
     @Override
     public void add(Stock st) {
         queue.add(st);
-    }
-
-    @Override
-    public void remove(Stock st) {
-        queue.remove(st);
     }
 
     @Override

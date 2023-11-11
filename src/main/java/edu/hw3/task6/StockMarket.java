@@ -1,9 +1,7 @@
-package edu.hw3.StockMarket;
+package edu.hw3.task6;
 
 public interface StockMarket {
     void add(Stock st);
-
-    void remove(Stock st);
 
     Stock mostValuableStock();
 

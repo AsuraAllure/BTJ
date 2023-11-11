@@ -1,4 +1,4 @@
-package edu.hw3;
+package edu.hw3.task8;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

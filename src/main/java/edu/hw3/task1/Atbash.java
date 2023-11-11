@@ -1,10 +1,13 @@
-package edu.hw3;
+package edu.hw3.task1;
 
 public class Atbash {
     private Atbash() {
     }
 
     public static String encode(String source) {
+        if (source == null) {
+            throw new NullPointerException();
+        }
         StringBuilder encodeStr = new StringBuilder();
         for (int i = 0; i < source.length(); i++) {
             int codeCharacter = source.charAt(i);

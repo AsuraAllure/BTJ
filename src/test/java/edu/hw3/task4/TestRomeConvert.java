@@ -1,4 +1,4 @@
-package edu.hw3;
+package edu.hw3.task4;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package edu.hw3;
+package edu.hw3.task5;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,11 @@ public class AscDescSort {
     }
 
     public static Object[] parseContact(String[] rawContacts, String order) {
-        if (rawContacts == null) {
+        if (rawContacts == null || order == null) {
+            throw new NullPointerException();
+        }
+
+        if (rawContacts.length == 0) {
             return new Object[0];
         }
 

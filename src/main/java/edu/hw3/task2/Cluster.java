@@ -1,4 +1,4 @@
-package edu.hw3;
+package edu.hw3.task2;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +10,10 @@ public class Cluster {
     }
 
     public static String[] clusterize(String source) {
+        if (source == null) {
+            throw new NullPointerException();
+        }
+
         if (source.length() == 0) {
             return new String[0];
         }

@@ -1,4 +1,4 @@
-package edu.hw3;
+package edu.hw3.task3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +8,10 @@ public class FrecDict {
     }
 
     public static <E> Map<E, Integer> toFreqDict(E[] arr) {
+        if (arr == null) {
+            throw new NullPointerException();
+        }
+
         Map<E, Integer> dict = new HashMap<>();
         for (var obj : arr) {
             if (dict.containsKey(obj)) {

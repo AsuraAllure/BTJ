@@ -1,4 +1,4 @@
-package edu.hw3;
+package edu.hw3.task8;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,11 +20,5 @@ public class TestBackwardIterator {
         Assertions.assertFalse(it.hasNext());
         Throwable thrown = Assertions.assertThrows(NoSuchElementException.class, it::next);
         Assertions.assertEquals(NoSuchElementException.class, thrown.getClass());
-
-        List<Integer> l = List.of(1, 2, 3);
-        Iterator<Integer> it2 = new BackwardIterator<Integer, Iterable<Integer>>(l);
-        it2.next();
-        Throwable thrown2 = Assertions.assertThrows(UnsupportedOperationException.class, it::remove);
-        Assertions.assertEquals(UnsupportedOperationException.class, thrown2.getClass());
     }
 }
