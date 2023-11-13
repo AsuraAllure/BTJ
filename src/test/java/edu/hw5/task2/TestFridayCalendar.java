@@ -3,6 +3,7 @@ package edu.hw5.task2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class TestFridayCalendar {
@@ -25,6 +26,9 @@ public class TestFridayCalendar {
     }
 
     @Test
-    public void testFindNextFriday() {
+    public void testAdjuster() {
+        Assertions.assertEquals(LocalDate.of(1925, 3, 13), FridayCalendar.nextFriday(LocalDate.of(1925, 2, 25)));
+        Assertions.assertEquals(LocalDate.of(1925, 3, 13), FridayCalendar.nextFriday(LocalDate.of(1925, 3, 13)));
+        Assertions.assertEquals(LocalDate.of(2024, 12, 13), FridayCalendar.nextFriday(LocalDate.of(2024, 10, 13)));
     }
 }

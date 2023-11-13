@@ -1,6 +1,9 @@
 package edu.hw5.task2;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAdjuster;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,10 @@ public class FridayCalendar {
 
     private FridayCalendar() {
 
+    }
+
+    public static LocalDate nextFriday(LocalDate data) {
+        return data.with(new NextFridayAdjuster());
     }
 
     public static List<String> findFriday(int year) {
@@ -24,5 +31,19 @@ public class FridayCalendar {
         }
 
         return answer;
+    }
+
+    private static class NextFridayAdjuster implements TemporalAdjuster {
+        private final static int FRIDAY_DATA = 13;
+
+        @Override
+        public LocalDate adjustInto(Temporal temporal) {
+            LocalDate date = (LocalDate) temporal;
+            while (!(date.getDayOfMonth() == FRIDAY_DATA &&
+                date.getDayOfWeek().getValue() == DayOfWeek.FRIDAY.getValue())) {
+                date = date.plusDays(1);
+            }
+            return date;
+        }
     }
 }
