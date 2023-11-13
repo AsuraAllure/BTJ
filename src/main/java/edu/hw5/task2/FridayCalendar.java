@@ -39,8 +39,8 @@ public class FridayCalendar {
         @Override
         public LocalDate adjustInto(Temporal temporal) {
             LocalDate date = (LocalDate) temporal;
-            while (!(date.getDayOfMonth() == FRIDAY_DATA &&
-                date.getDayOfWeek().getValue() == DayOfWeek.FRIDAY.getValue())) {
+            while (!(date.getDayOfMonth() == FRIDAY_DATA
+                && date.getDayOfWeek().getValue() == DayOfWeek.FRIDAY.getValue())) {
                 date = date.plusDays(1);
             }
             return date;
