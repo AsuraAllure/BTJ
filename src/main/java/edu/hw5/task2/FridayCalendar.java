@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FridayCalendar {
-    private static final int MAX_MONTH = 1;
-    private static final int MIN_MONTH = 2;
+    private static final int FRIDAY_DATA = 13;
     private static final int FRIDAY = 5;
 
     private FridayCalendar() {
@@ -16,7 +15,7 @@ public class FridayCalendar {
     public static List<String> findFriday(int year) {
         List<String> answer = new ArrayList<>();
 
-        LocalDate varDate = LocalDate.of(year, MIN_MONTH, MAX_MONTH);
+        LocalDate varDate = LocalDate.of(year, 1, FRIDAY_DATA);
         while (varDate.getYear() != year + 1) {
             if (varDate.getDayOfWeek().getValue() == FRIDAY) {
                 answer.add(varDate.toString());

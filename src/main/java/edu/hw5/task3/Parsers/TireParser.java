@@ -12,7 +12,6 @@ public class TireParser extends Parser {
     private static final int MONTH_GROUP = 2;
     private static final int DAY_GROUP = 3;
 
-
     public TireParser(Parser nextParser) {
         parser = nextParser;
     }
@@ -29,7 +28,7 @@ public class TireParser extends Parser {
                     Integer.parseInt(m.group(MONTH_GROUP)),
                     Integer.parseInt(m.group(DAY_GROUP))
                 );
-            } catch (DateTimeException d) {
+            } catch (DateTimeException exception) {
                 return parser.parse(rawData);
             }
             return Optional.of(date);
