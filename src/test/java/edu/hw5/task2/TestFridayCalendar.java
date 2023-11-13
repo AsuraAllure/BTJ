@@ -2,12 +2,12 @@ package edu.hw5.task2;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import java.time.LocalDate;
+
 import java.util.List;
 
 public class TestFridayCalendar {
     @Test
-    public void testFindFriday(){
+    public void testFindFriday() {
         List<String> l2024 = List.of(
             "2024-09-13",
             "2024-12-13"
@@ -25,6 +25,6 @@ public class TestFridayCalendar {
     }
 
     @Test
-    public void testFindNextFriday(){
+    public void testFindNextFriday() {
     }
 }

@@ -8,6 +8,12 @@ import java.util.regex.Pattern;
 
 public class SlashParser extends Parser {
 
+    private static final int YEAR_GROUP = 3;
+    private static final int MONTH_GROUP = 2;
+    private static final int DAY_GROUP = 1;
+    private static final int YEAR_OFFSET = 2000;
+    private static final int YEAR_BOUNDARY = 100;
+
     public SlashParser(Parser nextParser) {
         parser = nextParser;
     }
@@ -19,17 +25,17 @@ public class SlashParser extends Parser {
         if (m.find()) {
             LocalDate date;
             try {
-                int year = Integer.parseInt(m.group(3));
-                if (year < 100) {
-                    year += 2000;
+                int year = Integer.parseInt(m.group(YEAR_GROUP));
+                if (year < YEAR_BOUNDARY) {
+                    year += YEAR_OFFSET;
                 }
 
                 date = LocalDate.of(
                     year,
-                    Integer.parseInt(m.group(2)),
-                    Integer.parseInt(m.group(1))
+                    Integer.parseInt(m.group(MONTH_GROUP)),
+                    Integer.parseInt(m.group(DAY_GROUP))
                 );
-            } catch (DateTimeException d) {
+            } catch (DateTimeException exception) {
                 return parser.parse(rawData);
             }
             return Optional.of(date);

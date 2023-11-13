@@ -6,8 +6,8 @@ public class Substring {
     private Substring() {
     }
 
-    public static boolean substr(String S, String T) {
-        Pattern p = Pattern.compile(S);
-        return p.matcher(T).find();
+    public static boolean substr(String s, String t) {
+        Pattern p = Pattern.compile(s);
+        return p.matcher(t).find();
     }
 }

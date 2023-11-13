@@ -8,6 +8,11 @@ import java.util.regex.Pattern;
 
 public class TireParser extends Parser {
 
+    private static final int YEAR_GROUP = 1;
+    private static final int MONTH_GROUP = 2;
+    private static final int DAY_GROUP = 3;
+
+
     public TireParser(Parser nextParser) {
         parser = nextParser;
     }
@@ -20,9 +25,9 @@ public class TireParser extends Parser {
             LocalDate date;
             try {
                 date = LocalDate.of(
-                    Integer.parseInt(m.group(1)),
-                    Integer.parseInt(m.group(2)),
-                    Integer.parseInt(m.group(3))
+                    Integer.parseInt(m.group(YEAR_GROUP)),
+                    Integer.parseInt(m.group(MONTH_GROUP)),
+                    Integer.parseInt(m.group(DAY_GROUP))
                 );
             } catch (DateTimeException d) {
                 return parser.parse(rawData);
