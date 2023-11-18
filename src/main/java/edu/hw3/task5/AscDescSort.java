@@ -6,6 +6,7 @@ import java.util.List;
 public class AscDescSort {
     private final static String ASC_ORDER = "ASC";
     private final static String DESC_ORDER = "DESC";
+
     private AscDescSort() {
     }
 
