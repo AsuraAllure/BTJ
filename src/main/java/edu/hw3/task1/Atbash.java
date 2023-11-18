@@ -5,7 +5,7 @@ public class Atbash {
     }
 
     public static String encode(String source) {
-        if (source == null) {
+        if (source == null || source.length() == 0) {
             throw new NullPointerException();
         }
         StringBuilder encodeStr = new StringBuilder();

@@ -9,6 +9,8 @@ public class TestAtbash {
     public void shouldThrowNullException() {
         NullPointerException exc = Assertions.assertThrows(NullPointerException.class, () -> Atbash.encode(null));
         Assertions.assertEquals(NullPointerException.class, exc.getClass());
+        NullPointerException exc2 = Assertions.assertThrows(NullPointerException.class, () -> Atbash.encode(""));
+        Assertions.assertEquals(NullPointerException.class, exc2.getClass());
     }
 
     @Test

@@ -14,11 +14,7 @@ public class FrecDict {
 
         Map<E, Integer> dict = new HashMap<>();
         for (var obj : arr) {
-            if (dict.containsKey(obj)) {
-                dict.put(obj, dict.get(obj) + 1);
-            } else {
-                dict.put(obj, 1);
-            }
+            dict.put(obj, dict.getOrDefault(obj, 1));
         }
         return dict;
     }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AscDescSort {
+    private final static String ASC_ORDER = "ASC";
+    private final static String DESC_ORDER = "DESC";
     private AscDescSort() {
     }
 
@@ -26,7 +28,7 @@ public class AscDescSort {
             }
         }
 
-        if (order.equals("ASC")) {
+        if (ASC_ORDER.equals(order)) {
             return contacts.stream().sorted((s1, s2) ->
                 s1.surname.compareTo(s2.surname) == 0
                     ? s1.name.compareTo(s2.name)
@@ -34,7 +36,7 @@ public class AscDescSort {
             ).toArray();
         }
 
-        if (order.equals("DESC")) {
+        if (DESC_ORDER.equals(order)) {
             return contacts.stream().sorted((s1, s2) ->
                 s1.surname.compareTo(s2.surname) == 0
                     ? -s1.name.compareTo(s2.name)

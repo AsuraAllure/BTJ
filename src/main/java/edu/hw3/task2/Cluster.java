@@ -1,10 +1,13 @@
 package edu.hw3.task2;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
-import java.util.Stack;
 
 public class Cluster {
+    private static final String[] EMPTY_LIST = new String[0];
+
     private Cluster() {
 
     }
@@ -15,11 +18,11 @@ public class Cluster {
         }
 
         if (source.length() == 0) {
-            return new String[0];
+            return EMPTY_LIST;
         }
 
-        Stack<Character> stack = new Stack<>();
-        List<String> clusters = new LinkedList<>();
+        Deque<Character> stack = new ArrayDeque<>();
+        List<String> clusters = new ArrayList<>();
         StringBuilder cluster = new StringBuilder();
 
         for (int i = 0; i < source.length(); i++) {
@@ -32,7 +35,7 @@ public class Cluster {
                 }
             }
 
-            if (stack.empty()) {
+            if (stack.isEmpty()) {
                 clusters.add(cluster.toString());
                 cluster = new StringBuilder();
             }

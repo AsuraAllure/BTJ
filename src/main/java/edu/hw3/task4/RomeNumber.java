@@ -5,6 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RomeNumber {
+    private static final List<AbstractMap.SimpleEntry<String, Integer>> ROME_NUMBER_MAP = new ArrayList<>(
+        List.of(
+            new AbstractMap.SimpleEntry<>("M", 1000),
+            new AbstractMap.SimpleEntry<>("D", 500),
+            new AbstractMap.SimpleEntry<>("C", 100),
+            new AbstractMap.SimpleEntry<>("L", 50),
+            new AbstractMap.SimpleEntry<>("X", 10),
+            new AbstractMap.SimpleEntry<>("V", 5),
+            new AbstractMap.SimpleEntry<>("I", 1)
+        )
+    );
+
     private RomeNumber() {
     }
 
@@ -12,29 +24,18 @@ public class RomeNumber {
 
         int arabianNumber = arabNumber;
         StringBuilder romeNumber = new StringBuilder();
-        final ArrayList<AbstractMap.SimpleEntry<String, Integer>> dict = new ArrayList<>(
-            List.of(
-                new AbstractMap.SimpleEntry<>("M", 1000),
-                new AbstractMap.SimpleEntry<>("D", 500),
-                new AbstractMap.SimpleEntry<>("C", 100),
-                new AbstractMap.SimpleEntry<>("L", 50),
-                new AbstractMap.SimpleEntry<>("X", 10),
-                new AbstractMap.SimpleEntry<>("V", 5),
-                new AbstractMap.SimpleEntry<>("I", 1)
-            )
-        );
 
         int countSymbol;
-        for (int j = 0; j < dict.size() - 1; j++) {
-            countSymbol = arabianNumber / dict.get(j).getValue();
-            romeNumber.append(dict.get(j).getKey().repeat(countSymbol));
+        for (int j = 0; j < ROME_NUMBER_MAP.size() - 1; j++) {
+            countSymbol = arabianNumber / ROME_NUMBER_MAP.get(j).getValue();
+            romeNumber.append(ROME_NUMBER_MAP.get(j).getKey().repeat(countSymbol));
 
-            arabianNumber %= dict.get(j).getValue();
+            arabianNumber %= ROME_NUMBER_MAP.get(j).getValue();
 
             int subIndex = (j / 2) * 2 + 2;
-            if (arabianNumber >= dict.get(j).getValue() - dict.get(subIndex).getValue()) {
-                romeNumber.append(dict.get(subIndex).getKey().concat(dict.get(j).getKey()));
-                arabianNumber -= dict.get(j).getValue() - dict.get(subIndex).getValue();
+            if (arabianNumber >= ROME_NUMBER_MAP.get(j).getValue() - ROME_NUMBER_MAP.get(subIndex).getValue()) {
+                romeNumber.append(ROME_NUMBER_MAP.get(subIndex).getKey().concat(ROME_NUMBER_MAP.get(j).getKey()));
+                arabianNumber -= ROME_NUMBER_MAP.get(j).getValue() - ROME_NUMBER_MAP.get(subIndex).getValue();
             }
         }
         romeNumber.append("I".repeat(arabianNumber));
