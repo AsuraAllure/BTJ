@@ -6,7 +6,6 @@ import edu.hw5.task3.Parsers.Parser;
 import edu.hw5.task3.Parsers.SlashParser;
 import edu.hw5.task3.Parsers.TireParser;
 import edu.hw5.task3.Parsers.WordParser;
-
 import java.time.Clock;
 
 public class ParserTask {
