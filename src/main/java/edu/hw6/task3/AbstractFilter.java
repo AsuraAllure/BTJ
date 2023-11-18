@@ -7,7 +7,8 @@ public interface AbstractFilter extends DirectoryStream.Filter<Path> {
     @Override
     boolean accept(Path path);
 
-    default AbstractFilter and(AbstractFilter newFilter){
+    default AbstractFilter and(AbstractFilter newFilter) {
         return new ComposeFilter(newFilter, this);
     }
+
 }
