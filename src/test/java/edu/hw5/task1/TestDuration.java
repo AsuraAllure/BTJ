@@ -18,12 +18,7 @@ public class TestDuration {
 
     @Test
     public void testNull() {
-
-        NullPointerException exp = Assertions.assertThrows(NullPointerException.class, () -> Analytics.analise(null));
-        Assertions.assertEquals(
-            NullPointerException.class,
-            exp.getClass()
-        );
+        Assertions.assertThrows(NullPointerException.class, () -> Analytics.analise(null));
     }
 
     @Test

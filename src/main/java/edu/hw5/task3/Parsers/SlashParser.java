@@ -15,7 +15,7 @@ public class SlashParser extends Parser {
     private static final int YEAR_BOUNDARY = 100;
 
     public SlashParser(Parser nextParser) {
-        parser = nextParser;
+        super(nextParser);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class TireParser extends Parser {
     private static final int DAY_GROUP = 3;
 
     public TireParser(Parser nextParser) {
-        parser = nextParser;
+        super(nextParser);
     }
 
     @Override

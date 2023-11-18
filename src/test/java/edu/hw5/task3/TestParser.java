@@ -13,8 +13,7 @@ public class TestParser {
 
     @Test
     public void testSuccess() {
-        Parser parser = ParserTask.createChainParser();
-        parser.setClock(Clock.fixed(
+        Parser parser = ParserTask.createChainParser(Clock.fixed(
             LocalDate.of(2023, 11, 12).atStartOfDay().toInstant(ZoneOffset.MIN),
             ZoneId.systemDefault()
         ));
@@ -29,8 +28,7 @@ public class TestParser {
 
     @Test
     public void testFail() {
-        Parser parser = ParserTask.createChainParser();
-        parser.setClock(Clock.fixed(
+        Parser parser = ParserTask.createChainParser(Clock.fixed(
             LocalDate.of(2023, 11, 12).atStartOfDay().toInstant(ZoneOffset.MIN),
             ZoneId.systemDefault()
         ));

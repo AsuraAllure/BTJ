@@ -1,14 +1,16 @@
 package edu.hw5.task3.Parsers;
 
+import java.time.Clock;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AgoParser extends Parser {
-    public AgoParser(Parser p) {
-        this.parser = p;
+public class AgoParser extends TimeParser {
+
+    public AgoParser(Parser p, Clock c) {
+        super(p, c);
     }
 
     @Override
