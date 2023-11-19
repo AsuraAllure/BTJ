@@ -3,7 +3,6 @@ package edu.hw6.task3;
 import java.nio.file.Path;
 
 public class ExtensionFilter implements AbstractFilter {
-
     private static final int MIN_LENGTH_EXT = 3;
     private static final int MAX_LENGTH_EXT = 4;
     private final String extension;

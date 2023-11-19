@@ -14,15 +14,12 @@ public class ClonePath {
     private final static String TXT_EXTENSION = ".txt";
 
     private ClonePath() {
-
     }
 
     public static void clonePath(Path path) throws IOException {
         String cloneNumber = "";
         int i = 2;
-
         final String FILE_NAME_WITH_EXT = path.getFileName().toString();
-
         final String FILE_NAME = FILE_NAME_WITH_EXT.substring(0, FILE_NAME_WITH_EXT.length() - 4)
             + " - копия";
 
