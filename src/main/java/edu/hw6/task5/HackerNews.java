@@ -7,6 +7,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Arrays;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HackerNews {
@@ -45,13 +46,14 @@ public class HackerNews {
                 .build();
 
             HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
-            Pattern pattern = Pattern.compile(".*\"title\":\s*\"(.*)\"");
-            return pattern.matcher(response.body()).group(1);
-        } catch (URISyntaxException ignored) {
+            Pattern pattern = Pattern.compile("\"title\":\"(.+?)\"");
+            Matcher m = pattern.matcher(response.body());
+            if (m.find()) {
+                return m.group(1);
+            }
+        } catch (URISyntaxException | InterruptedException ignored) {
         } catch (IOException e) {
             throw new IOException(e);
-        } catch (InterruptedException e) {
-            throw new InterruptedException(e.getMessage());
         }
         return "";
     }

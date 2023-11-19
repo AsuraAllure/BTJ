@@ -14,17 +14,13 @@ public class DiskMap implements Map<String, String>, AutoCloseable {
     private final Map<String, String> map;
     private final File file;
 
-    public Map<String, String> getMap(){
-        return map;
-    }
-
     public DiskMap(Path fromFile) throws IOException {
         file = fromFile.toFile();
         map = new HashMap<>();
         fillMap();
     }
 
-    public DiskMap(long seed) throws IOException{
+    public DiskMap(long seed) throws IOException {
         file = Path.of(
             System.getProperty("user.home"),
             "DiscMap",
@@ -36,15 +32,21 @@ public class DiskMap implements Map<String, String>, AutoCloseable {
             "DiscMap"
         ).toFile();
 
-        if (!dir.exists())
+        if (!dir.exists()) {
             dir.mkdir();
+        }
 
         file.createNewFile();
 
         map = new HashMap<>();
         fillMap();
     }
-    private void fillMap() throws IOException{
+
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    private void fillMap() throws IOException {
         try (Scanner fr = new Scanner(file)) {
             String nextLine;
             Pattern delim = Pattern.compile("^(\\w+):(\\w+)$");
@@ -127,8 +129,8 @@ public class DiskMap implements Map<String, String>, AutoCloseable {
 
     @Override
     public void close() throws Exception {
-        try(FileWriter fw = new FileWriter(file)){
-            for(var entry: map.entrySet()){
+        try (FileWriter fw = new FileWriter(file)) {
+            for (var entry : map.entrySet()) {
                 fw.write("%s:%s\n".formatted(entry.getKey(), entry.getValue()));
             }
         }

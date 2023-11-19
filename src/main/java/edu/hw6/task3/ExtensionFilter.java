@@ -4,11 +4,14 @@ import java.nio.file.Path;
 
 public class ExtensionFilter implements AbstractFilter {
     private final String EXTENSION;
-    public ExtensionFilter(String extension){
-        if (extension == null)
+
+    public ExtensionFilter(String extension) {
+        if (extension == null) {
             throw new NullPointerException();
-        if (extension.length() == 0 || extension.length() > 3)
+        }
+        if (extension.length() < 3 || extension.length() > 4) {
             throw new IllegalArgumentException();
+        }
         this.EXTENSION = extension;
     }
 

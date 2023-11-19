@@ -12,7 +12,7 @@ public class ClonePath {
 
         final String FILE_NAME =
             FILE_NAME_WITH_EXT.substring(0, FILE_NAME_WITH_EXT.length() - 4)
-            + " - копия";
+                + " - копия";
 
         Path cloneNamePath = Path.of(
             path.getParent().toString(),

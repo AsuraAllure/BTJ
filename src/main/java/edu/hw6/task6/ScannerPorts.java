@@ -26,7 +26,7 @@ public class ScannerPorts {
         }
     };
 
-    private static final Map<Integer, String> descriptionUDP = new HashMap<>(){{
+    private static final Map<Integer, String> descriptionUDP = new HashMap<>() {{
         put(137, "NetBIOS Name Service");
         put(138, "NetBIOS Datagram Service");
         put(500, "ISAKMP");
@@ -52,7 +52,6 @@ public class ScannerPorts {
                 openUDPPorts.add(port);
             }
         }
-
 
         printStream.println("TCP");
         printStream.println("Port  Service");

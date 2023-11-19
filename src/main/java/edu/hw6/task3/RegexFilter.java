@@ -3,14 +3,14 @@ package edu.hw6.task3;
 import java.nio.file.Path;
 import java.util.regex.Pattern;
 
-public class RegexFilter implements AbstractFilter{
+public class RegexFilter implements AbstractFilter {
 
     private final Pattern pattern;
 
-    public RegexFilter(Pattern pat){
-        if (pat == null)
+    public RegexFilter(Pattern pat) {
+        if (pat == null) {
             throw new NullPointerException();
-
+        }
         pattern = pat;
     }
 

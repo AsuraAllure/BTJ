@@ -28,17 +28,17 @@ public class TestClone {
         }
     }
 
-    private String findNewName(Path dir, String name){
+    private String findNewName(Path dir, String name) {
         List<String> filesName = Stream.of(dir.toFile().listFiles()).map(File::getName).toList();
 
         String newNameFile = name.substring(0, name.length() - 4) + " - копия.txt";
 
-        if (filesName.contains(newNameFile)){
+        if (filesName.contains(newNameFile)) {
             int i = 2;
-            newNameFile = newNameFile.substring(0, newNameFile.length()- 4) +" (%d).txt".formatted(i);
-            while(filesName.contains(newNameFile)){
+            newNameFile = newNameFile.substring(0, newNameFile.length() - 4) + " (%d).txt".formatted(i);
+            while (filesName.contains(newNameFile)) {
                 i++;
-                newNameFile = newNameFile.substring(0, newNameFile.length()- 4) +" (%d).txt".formatted(i);
+                newNameFile = newNameFile.substring(0, newNameFile.length() - 4) + " (%d).txt".formatted(i);
             }
         }
         return newNameFile;
@@ -61,16 +61,16 @@ public class TestClone {
         );
 
         try {
-            if (!file.toFile().exists())
+            if (!file.toFile().exists()) {
                 file.toFile().createNewFile();
-            else{
+            } else {
                 file.toFile().delete();
                 file.toFile().createNewFile();
             }
         } catch (IOException e) {
             Assertions.fail();
         }
-        try(FileWriter fw = new FileWriter(file.toFile())){
+        try (FileWriter fw = new FileWriter(file.toFile())) {
             fw.write("Top-Top secret.");
         } catch (IOException e) {
             Assertions.fail();
