@@ -1,7 +1,5 @@
 package edu.hw6.task1;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
@@ -14,6 +12,8 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class DiskMap implements Map<String, String>, AutoCloseable {
     private final Map<String, String> map;

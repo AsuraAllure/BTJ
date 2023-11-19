@@ -1,5 +1,6 @@
 package edu.hw6.task2;
 
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -10,11 +11,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class ClonePath {
-    private ClonePath(){
+    private final static String TXT_EXTENSION = ".txt";
+
+    private ClonePath() {
 
     }
-
-    private final static String TXT_EXTENSION = ".txt";
 
     public static void clonePath(Path path) throws IOException {
         String cloneNumber = "";
@@ -23,7 +24,7 @@ public class ClonePath {
         final String FILE_NAME_WITH_EXT = path.getFileName().toString();
 
         final String FILE_NAME = FILE_NAME_WITH_EXT.substring(0, FILE_NAME_WITH_EXT.length() - 4)
-                + " - копия";
+            + " - копия";
 
         Path cloneNamePath = Path.of(
             path.getParent().toString(),
