@@ -17,6 +17,7 @@ class RegexFilterTest {
 
     @Test
     void accept() {
+        TestFiltersParameters.fillDirectory();
         DirectoryStream.Filter<Path> filter = new RegexFilter(Pattern.compile("regex"));
         Set<String> files = new HashSet<>();
         Set<String> expected = Set.of(

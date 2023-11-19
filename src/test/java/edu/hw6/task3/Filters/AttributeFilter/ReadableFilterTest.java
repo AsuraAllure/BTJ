@@ -16,6 +16,7 @@ class ReadableFilterTest {
 
     @Test
     void accept() {
+        TestFiltersParameters.fillDirectory();
         DirectoryStream.Filter<Path> filter = new ReadableFilter();
         List<String> files = new ArrayList<>();
         List<String> expected = List.of(

@@ -16,6 +16,9 @@ class SizeFilterTest {
 
     @Test
     public void accept() {
+
+        TestFiltersParameters.fillDirectory();
+
         DirectoryStream.Filter<Path> filter1 = new SizeFilter(5);
         DirectoryStream.Filter<Path> filter2 = new SizeFilter(1, 5);
         DirectoryStream.Filter<Path> filter3 = new SizeFilter(9, 10);

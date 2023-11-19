@@ -15,6 +15,7 @@ import java.util.List;
 class WritableFilterTest {
     @Test
     void accept() {
+        TestFiltersParameters.fillDirectory();
         DirectoryStream.Filter<Path> filter = new WritableFilter();
         List<String> files = new ArrayList<>();
         List<String> expected = List.of(

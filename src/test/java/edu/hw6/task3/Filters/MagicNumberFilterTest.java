@@ -15,6 +15,7 @@ import java.util.Set;
 class MagicNumberFilterTest {
     @Test
     void accept() {
+        TestFiltersParameters.fillDirectory();
         DirectoryStream.Filter<Path> filter = new MagicNumberFilter(new char[] {'M', 'Z'});
         Set<String> files = new HashSet<>();
         Set<String> expected = Set.of(

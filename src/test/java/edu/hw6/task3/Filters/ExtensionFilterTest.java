@@ -15,6 +15,7 @@ import java.util.Set;
 class ExtensionFilterTest {
     @Test
     void accept() {
+        TestFiltersParameters.fillDirectory();
         DirectoryStream.Filter<Path> filter1 = new ExtensionFilter("txt");
         Set<String> files1 = new HashSet<>();
         Set<String> expected1 = Set.of(

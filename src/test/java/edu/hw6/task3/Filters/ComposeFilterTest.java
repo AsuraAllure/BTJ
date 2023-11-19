@@ -18,6 +18,7 @@ import java.util.Set;
 class ComposeFilterTest {
     @Test
     void accept() {
+        TestFiltersParameters.fillDirectory();
         AbstractFilter sizeFilter = new SizeFilter(5, 10);
         AbstractFilter readableFilter = new ReadableFilter();
 
