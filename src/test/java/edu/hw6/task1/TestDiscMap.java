@@ -1,5 +1,6 @@
 package edu.hw6.task1;
 
+import edu.hw6.SupportTestFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.io.File;
@@ -12,23 +13,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TestDiscMap {
-    private static void deleteDirectory(Path dir) {
-        if (dir.toFile().exists()) {
-            File dirF = dir.toFile();
-            File[] listFiles = dirF.listFiles();
-            if (listFiles != null) {
-                for (var f : listFiles) {
-                    if (!f.delete()) {
-                        Assertions.fail();
-                    }
-                }
-            }
-            if (!dirF.delete()) {
-                Assertions.fail();
-            }
-        }
-    }
-
     @Test
     public void testCreateDirectory() {
         Path dir = Path.of(
@@ -36,14 +20,14 @@ public class TestDiscMap {
             "DiscMap"
         );
 
-        deleteDirectory(dir);
+        SupportTestFunction.deleteDirectory(dir);
 
         try (DiskMap d1 = new DiskMap(3)) {
         } catch (Exception exception) {
             Assertions.fail();
         }
         Assertions.assertTrue(dir.toFile().exists());
-        deleteDirectory(dir);
+        SupportTestFunction.deleteDirectory(dir);
     }
 
     @Test
@@ -53,7 +37,7 @@ public class TestDiscMap {
             "DiscMap"
         );
 
-        deleteDirectory(dir);
+        SupportTestFunction.deleteDirectory(dir);
 
         try (DiskMap d1 = new DiskMap(3)) {
             d1.put("first", "1");
@@ -98,7 +82,7 @@ public class TestDiscMap {
         }
         Assertions.assertEquals(setExpectedString, entryMap);
 
-        deleteDirectory(dir);
+        SupportTestFunction.deleteDirectory(dir);
     }
 
     @Test

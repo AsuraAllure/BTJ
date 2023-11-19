@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class MagicNumberFilter implements AbstractFilter {
     // для простоты считается, что магическое число находится в начале файла(смещение 0).
 
-    private final char[] MAGIC_NUMBER;
+    private final char[] magicNumber;
 
     public MagicNumberFilter(char[] magicNumber) {
         if (magicNumber == null) {
@@ -19,17 +19,17 @@ public class MagicNumberFilter implements AbstractFilter {
             throw new IllegalArgumentException();
         }
 
-        MAGIC_NUMBER = magicNumber;
+        this.magicNumber = magicNumber;
     }
 
     @Override
     public boolean accept(Path path) {
-        char[] readied = new char[MAGIC_NUMBER.length];
+        char[] readied = new char[magicNumber.length];
         try (FileReader fr = new FileReader(path.toFile())) {
             fr.read(readied);
         } catch (IOException e) {
             return false;
         }
-        return Arrays.equals(MAGIC_NUMBER, readied);
+        return Arrays.equals(magicNumber, readied);
     }
 }

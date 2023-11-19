@@ -11,32 +11,37 @@ import java.util.List;
 import java.util.Map;
 
 public class ScannerPorts {
-    private static final Map<Integer, String> descriptionTCP = new HashMap<>() {
+
+    private final static int SSH_PORT = 22;
+    private final static int SMTP_PORT = 25;
+    private final static int DNS_PORT = 53;
+    private final static int POP3_PORT = 110;
+    private final static int NETBIOS_SESSION_SERVICE_PORT = 139;
+    private final static int HTTPS_PORT = 443;
+    private static final Map<Integer, String> DESCRIPTION_TCP = new HashMap<>() {
         {
-            put(21, "FTP");
-            put(22, "SSH");
-            put(23, "Telnet");
-            put(25, "SMTP");
-            put(43, "WHOIS");
-            put(53, "DNS");
-            put(110, "POP3");
-            put(139, "NetBIOS Session Service");
-            put(443, "HTTPS");
-            put(445, "Microsoft-DS (Directory Services) Active Directory");
+            put(SSH_PORT, "SSH");
+            put(SMTP_PORT, "SMTP");
+            put(DNS_PORT, "DNS");
+            put(POP3_PORT, "POP3");
+            put(NETBIOS_SESSION_SERVICE_PORT, "NetBIOS Session Service");
+            put(HTTPS_PORT, "HTTPS");
         }
     };
 
-    private static final Map<Integer, String> descriptionUDP = new HashMap<>() {{
-        put(137, "NetBIOS Name Service");
-        put(138, "NetBIOS Datagram Service");
-        put(500, "ISAKMP");
-        put(1900, "Simple Service Discovery Protocol (SSDP)");
-        put(3702, "Web Services Dynamic Discovery (WS-Discovery)");
-    }};
+    private final static int NETBIOS_NAME_SERVICE_PORT = 137;
+    private final static int NETBIOS_DATAGRAM_SERVICE_PORT = 138;
+    private final static int ISAKMP_PORT = 500;
+    private final static int SSDP_PORT = 1900;
+    private final static int WS_DISCOVERY_PORT = 3702;
 
-    public static void main(String[] arg) {
-        scanPorts(System.out);
-    }
+    private static final Map<Integer, String> DESCRIPTION_UDP = new HashMap<>() {{
+        put(NETBIOS_NAME_SERVICE_PORT, "NetBIOS Name Service");
+        put(NETBIOS_DATAGRAM_SERVICE_PORT, "NetBIOS Datagram Service");
+        put(ISAKMP_PORT, "ISAKMP");
+        put(SSDP_PORT, "Simple Service Discovery Protocol (SSDP)");
+        put(WS_DISCOVERY_PORT, "Web Services Dynamic Discovery (WS-Discovery)");
+    }};
 
     public static void scanPorts(PrintStream printStream) {
         List<Integer> openTCPPorts = new ArrayList<>();
@@ -56,11 +61,11 @@ public class ScannerPorts {
         printStream.println("TCP");
         printStream.println("Port  Service");
 
-        openTCPPorts.stream().forEach((x) -> printStream.println(x + " " + descriptionTCP.getOrDefault(x, "")));
+        openTCPPorts.stream().forEach((x) -> printStream.println(x + " " + DESCRIPTION_TCP.getOrDefault(x, "")));
 
         printStream.println("UDP");
         printStream.println("Port  Service");
 
-        openUDPPorts.stream().forEach((x) -> printStream.println(x + " " + descriptionUDP.getOrDefault(x, "")));
+        openUDPPorts.stream().forEach((x) -> printStream.println(x + " " + DESCRIPTION_UDP.getOrDefault(x, "")));
     }
 }

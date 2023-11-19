@@ -1,8 +1,8 @@
 package edu.hw6.task2;
 
+import edu.hw6.SupportTestFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,23 +11,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class TestClone {
-    private static void deleteDirectory(Path dir) {
-        if (dir.toFile().exists()) {
-            File dirF = dir.toFile();
-            File[] listFiles = dirF.listFiles();
-            if (listFiles != null) {
-                for (var f : listFiles) {
-                    if (!f.delete()) {
-                        Assertions.fail();
-                    }
-                }
-            }
-            if (!dirF.delete()) {
-                Assertions.fail();
-            }
-        }
-    }
-
     private String findNewName(Path dir, String name) {
         List<String> filesName = Stream.of(dir.toFile().listFiles()).map(File::getName).toList();
 
@@ -50,7 +33,7 @@ public class TestClone {
             System.getProperty("user.home"),
             "testTinkoffClone"
         );
-        deleteDirectory(dir);
+        SupportTestFunction.deleteDirectory(dir);
         dir.toFile().mkdir();
 
         final String NAME_CLONED_FILE = "Tinkoff Biggest Secret.txt";

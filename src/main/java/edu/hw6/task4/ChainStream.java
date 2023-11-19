@@ -2,7 +2,6 @@ package edu.hw6.task4;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
@@ -17,22 +16,20 @@ public class ChainStream {
     }
 
     public static void createFile(Path filePath) {
-        try (OutputStream outputStream = Files.newOutputStream(filePath)) {
-            try (CheckedOutputStream checkedStream = new CheckedOutputStream(outputStream, new CRC32C())) {
-                try (BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(checkedStream)) {
-                    try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
-                        bufferedOutputStream,
-                        StandardCharsets.UTF_8
-                    )) {
-                        try (PrintWriter printWriter = new PrintWriter(outputStreamWriter)) {
-                            printWriter.println("Programming is learned by writing programs. ― Brian Kernighan");
-                        }
-                    }
-                }
-            }
+
+        try (var outputStream = Files.newOutputStream(filePath);
+             CheckedOutputStream checkedStream = new CheckedOutputStream(outputStream, new CRC32C());
+             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(checkedStream);
+             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
+                 bufferedOutputStream,
+                 StandardCharsets.UTF_8
+             );
+             PrintWriter printWriter = new PrintWriter(outputStreamWriter)) {
+
+            printWriter.println("Programming is learned by writing programs. ― Brian Kernighan");
 
         } catch (IOException ignored) {
-
         }
+
     }
 }

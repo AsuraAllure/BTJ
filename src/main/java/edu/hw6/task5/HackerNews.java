@@ -16,6 +16,10 @@ public class HackerNews {
     private final static String URI_HACKER_SITE_ITEM = "https://hacker-news.firebaseio.com/v0/item/";
     private final static long[] EMPTY_LONG_ARRAY = new long[0];
 
+    private HackerNews() {
+
+    }
+
     public static long[] hackerNewsTopStories() {
         try {
             HttpRequest request = HttpRequest
@@ -39,7 +43,7 @@ public class HackerNews {
         return EMPTY_LONG_ARRAY;
     }
 
-    public static String news(long id) throws IOException, InterruptedException {
+    public static String news(long id) throws IOException {
         try {
             HttpRequest request = HttpRequest
                 .newBuilder(new URI(URI_HACKER_SITE_ITEM + id + ".json"))

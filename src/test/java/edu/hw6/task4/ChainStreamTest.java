@@ -1,22 +1,31 @@
 package edu.hw6.task4;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
+import edu.hw6.SupportTestFunction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ChainStreamTest {
-
     @Test
     void createFile() {
-        Path nameFile = Path.of(
+
+        Path dir = Path.of(
             System.getProperty("user.home"),
-            "testOutputChain",
+            "testOutputChain"
+        );
+        Path nameFile = Path.of(
+            dir.toString(),
             "hello.txt"
         );
+
+        SupportTestFunction.deleteDirectory(dir);
+        dir.toFile().mkdir();
+
         if (nameFile.toFile().exists()) {
             nameFile.toFile().delete();
         }
@@ -34,6 +43,6 @@ class ChainStreamTest {
         } catch (IOException e) {
             Assertions.fail();
         }
-
+        SupportTestFunction.deleteDirectory(dir);
     }
 }
