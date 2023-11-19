@@ -13,6 +13,7 @@ public class ClonePath {
     private ClonePath(){
 
     }
+
     private final static String TXT_EXTENSION = ".txt";
 
     public static void clonePath(Path path) throws IOException {
@@ -21,8 +22,7 @@ public class ClonePath {
 
         final String FILE_NAME_WITH_EXT = path.getFileName().toString();
 
-        final String FILE_NAME =
-            FILE_NAME_WITH_EXT.substring(0, FILE_NAME_WITH_EXT.length() - 4)
+        final String FILE_NAME = FILE_NAME_WITH_EXT.substring(0, FILE_NAME_WITH_EXT.length() - 4)
                 + " - копия";
 
         Path cloneNamePath = Path.of(

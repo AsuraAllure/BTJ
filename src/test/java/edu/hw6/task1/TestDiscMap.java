@@ -38,6 +38,7 @@ public class TestDiscMap {
         );
 
         SupportTestFunction.deleteDirectory(dir);
+        dir.toFile().mkdir();
 
         try (DiskMap d1 = new DiskMap(3)) {
             d1.put("first", "1");
@@ -49,7 +50,7 @@ public class TestDiscMap {
 
         File createdFile = Path.of(
             dir.toString(),
-            "49434.txt"
+            "935304.txt"
         ).toFile();
 
         Set<String> setExpectedString = Set.of(
