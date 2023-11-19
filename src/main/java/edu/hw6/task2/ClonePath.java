@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class ClonePath {
+    private ClonePath(){
 
+    }
     private final static String TXT_EXTENSION = ".txt";
 
     public static void clonePath(Path path) throws IOException {

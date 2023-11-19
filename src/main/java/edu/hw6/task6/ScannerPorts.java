@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class ScannerPorts {
 
+    private final static String HEADERS = "Port  Service";
     private final static int MAX_RESERVED_PORT = 49151;
     private final static int SSH_PORT = 22;
     private final static int SMTP_PORT = 25;
@@ -65,12 +66,12 @@ public class ScannerPorts {
         }
 
         printStream.println("TCP");
-        printStream.println("Port  Service");
+        printStream.println(HEADERS);
 
         openTCPPorts.stream().forEach((x) -> printStream.println(x + " " + DESCRIPTION_TCP.getOrDefault(x, "")));
 
         printStream.println("UDP");
-        printStream.println("Port  Service");
+        printStream.println(HEADERS);
 
         openUDPPorts.stream().forEach((x) -> printStream.println(x + " " + DESCRIPTION_UDP.getOrDefault(x, "")));
     }

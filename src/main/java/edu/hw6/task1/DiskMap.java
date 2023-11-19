@@ -6,13 +6,21 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DiskMap implements Map<String, String>, AutoCloseable {
     private final Map<String, String> map;
+    private static final String HOME_DIR = "user.home";
+    private static final String DISC_DIR = "DiscMap";
     private final File file;
+    private static final int MAX_RANDOM_SEED = 1000000;
 
     public DiskMap(Path fromFile) throws IOException {
         file = fromFile.toFile();
@@ -22,14 +30,14 @@ public class DiskMap implements Map<String, String>, AutoCloseable {
 
     public DiskMap(long seed) throws IOException {
         file = Path.of(
-            System.getProperty("user.home"),
-            "DiscMap",
-            new Random(seed).nextInt(1, 100000) + ".txt"
+            System.getProperty(HOME_DIR),
+            DISC_DIR,
+            new Random(seed).nextInt(1, MAX_RANDOM_SEED) + ".txt"
         ).toFile();
 
         File dir = Path.of(
-            System.getProperty("user.home"),
-            "DiscMap"
+            System.getProperty(HOME_DIR),
+            DISC_DIR
         ).toFile();
 
         if (!dir.exists()) {
