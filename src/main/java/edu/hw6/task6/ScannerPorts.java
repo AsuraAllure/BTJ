@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class ScannerPorts {
 
+    private final static int MAX_RESERVED_PORT = 49151;
     private final static int SSH_PORT = 22;
     private final static int SMTP_PORT = 25;
     private final static int DNS_PORT = 53;
@@ -28,13 +29,11 @@ public class ScannerPorts {
             put(HTTPS_PORT, "HTTPS");
         }
     };
-
     private final static int NETBIOS_NAME_SERVICE_PORT = 137;
     private final static int NETBIOS_DATAGRAM_SERVICE_PORT = 138;
     private final static int ISAKMP_PORT = 500;
     private final static int SSDP_PORT = 1900;
     private final static int WS_DISCOVERY_PORT = 3702;
-
     private static final Map<Integer, String> DESCRIPTION_UDP = new HashMap<>() {{
         put(NETBIOS_NAME_SERVICE_PORT, "NetBIOS Name Service");
         put(NETBIOS_DATAGRAM_SERVICE_PORT, "NetBIOS Datagram Service");
@@ -43,17 +42,24 @@ public class ScannerPorts {
         put(WS_DISCOVERY_PORT, "Web Services Dynamic Discovery (WS-Discovery)");
     }};
 
+    private ScannerPorts() {
+    }
+
     public static void scanPorts(PrintStream printStream) {
         List<Integer> openTCPPorts = new ArrayList<>();
         List<Integer> openUDPPorts = new ArrayList<>();
-
-        for (int port = 0; port <= 49151; port++) {
-            try (ServerSocket socket = new ServerSocket(port)) {
+        int countOpenPort = 0;
+        for (int port = 0; port <= MAX_RESERVED_PORT; port++) {
+            try (ServerSocket socket = new ServerSocket()) {
+                countOpenPort--;
             } catch (IOException e) {
+                countOpenPort++;
                 openTCPPorts.add(port);
             }
             try (DatagramSocket datagramSocket = new DatagramSocket(port)) {
+                countOpenPort--;
             } catch (SocketException e) {
+                countOpenPort++;
                 openUDPPorts.add(port);
             }
         }

@@ -1,6 +1,10 @@
-package edu.hw6.task3;
+package edu.hw6.task3.Filters;
 
+import edu.hw6.task3.TestFiltersParameters;
+import edu.hw6.task3.AbstractFilter;
 import edu.hw6.task3.AttributeFilter.ReadableFilter;
+import edu.hw6.task3.ComposeFilter;
+import edu.hw6.task3.SizeFilter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,8 @@
-package edu.hw6.task3;
+package edu.hw6.task3.Filters.AttributeFilter;
 
+import edu.hw6.SupportTestFunction;
+import edu.hw6.task3.AttributeFilter.ExecutableFilter;
+import edu.hw6.task3.TestFiltersParameters;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -10,26 +13,26 @@ import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
 
-class MagicNumberFilterTest {
+class ExecutableFilterTest {
+
     @Test
     void accept() {
-        DirectoryStream.Filter<Path> filter = new MagicNumberFilter(new char[] {'M', 'Z'});
+        TestFiltersParameters.fillDirectory();
+
+        DirectoryStream.Filter<Path> filter = new ExecutableFilter();
         Set<String> files = new HashSet<>();
         Set<String> expected = Set.of(
-            "hiew32.exe"
+            "10char.txt",
+            "hiew32.exe",
+            "PowerPoint.pptx",
+            "_regex_.txt"
         );
-
         try (DirectoryStream<Path> entries = Files.newDirectoryStream(TestFiltersParameters.DIR, filter)) {
             entries.forEach((x) -> files.add(x.getFileName().toString()));
         } catch (IOException e) {
             Assertions.fail();
         }
-        Assertions.assertEquals(expected, files);
-    }
 
-    @Test
-    void failConstraction() {
-        Assertions.assertThrows(NullPointerException.class, () -> new MagicNumberFilter(null));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new MagicNumberFilter(new char[0]));
+        Assertions.assertEquals(expected, files);
     }
 }

@@ -1,5 +1,6 @@
-package edu.hw6.task3.AttributeFilter;
+package edu.hw6.task3.Filters.AttributeFilter;
 
+import edu.hw6.task3.AttributeFilter.WritableFilter;
 import edu.hw6.task3.TestFiltersParameters;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
