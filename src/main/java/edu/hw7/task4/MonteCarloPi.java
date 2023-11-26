@@ -12,8 +12,9 @@ public class MonteCarloPi {
     private final int TOTAL_COUNT;
 
     public MonteCarloPi(int countThread, int totalCount) {
-        if (countThread < 1 || totalCount < 1)
+        if (countThread < 1 || totalCount < 1) {
             throw new IllegalArgumentException();
+        }
 
         COUNT_THREAD = countThread;
         TOTAL_COUNT = totalCount;
@@ -26,8 +27,9 @@ public class MonteCarloPi {
         int unusedThread = COUNT_THREAD + 1;
         int unusedCount = TOTAL_COUNT;
         for (int i = 0; i < COUNT_THREAD; i++) {
-            if (unusedCount > 0)
+            if (unusedCount > 0) {
                 unusedThread--;
+            }
             if (unusedCount % unusedThread == 0) {
                 results.add(executor.submit(new CalculateMonteCarlo(unusedCount / unusedThread)));
                 unusedCount -= unusedCount / unusedThread;
@@ -38,13 +40,11 @@ public class MonteCarloPi {
         }
 
         double pi = 0;
-        try{
-            for(int j =0; j < COUNT_THREAD - unusedThread + 1; j++){
+        try {
+            for (int j = 0; j < COUNT_THREAD - unusedThread + 1; j++) {
                 pi += results.get(j).get();
             }
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
 

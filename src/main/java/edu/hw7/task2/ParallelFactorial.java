@@ -10,10 +10,12 @@ public class ParallelFactorial {
     }
 
     public static BigInteger factorial(int n) {
-        if (n < 0)
+        if (n < 0) {
             throw new IllegalArgumentException();
-        if (n <= 1)
+        }
+        if (n <= 1) {
             return BigInteger.ONE;
+        }
         List<BigInteger> factList = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
             factList.add(BigInteger.valueOf(i));

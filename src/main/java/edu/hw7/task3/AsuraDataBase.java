@@ -33,9 +33,10 @@ public class AsuraDataBase implements PersonDataBase {
     public synchronized List<Person> findByName(String name) {
         lock.readLock().lock();
         List<Person> res = new ArrayList<>();
-        for(var pers: DATABASE.values()){
-            if (pers.name().equals(name))
+        for (var pers : DATABASE.values()) {
+            if (pers.name().equals(name)) {
                 res.add(pers);
+            }
         }
         lock.readLock().unlock();
         return res;
@@ -45,9 +46,10 @@ public class AsuraDataBase implements PersonDataBase {
     public synchronized List<Person> findByAddress(String address) {
         lock.readLock().lock();
         List<Person> res = new ArrayList<>();
-        for(var pers: DATABASE.values()){
-            if (pers.address().equals(address))
+        for (var pers : DATABASE.values()) {
+            if (pers.address().equals(address)) {
                 res.add(pers);
+            }
         }
         lock.readLock().unlock();
         return res;
@@ -57,9 +59,10 @@ public class AsuraDataBase implements PersonDataBase {
     public synchronized List<Person> findByPhone(String phone) {
         lock.readLock().lock();
         List<Person> res = new ArrayList<>();
-        for(var pers: DATABASE.values()){
-            if (pers.name().equals(phone))
+        for (var pers : DATABASE.values()) {
+            if (pers.name().equals(phone)) {
                 res.add(pers);
+            }
         }
         lock.readLock().unlock();
         return res;
