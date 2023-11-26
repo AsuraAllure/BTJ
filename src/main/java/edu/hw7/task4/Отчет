@@ -1,0 +1,28 @@
+Среднее время и погрешность для выполнения одного потока и 8 потоков:
+1) Для 10млн точек:
+    1.1) 0.1529917S, 5.4146410207067674E-5
+    1.2) 0.060001S, 2.334535897934309E-4
+2) Для 100 млн точек:
+    2.1) 1.4662473S 2.485464102068846E-4
+    2.2) 0.3295971S 8.433358979331729E-5
+3) Для 1млрд точек:
+    3.1) 11.3301992S, 8.705841020706373E-5
+    3.2) 2.9992146S, 5.3685589792795696E-5
+
+Код измерения:
+
+MonteCarloPi m5 = new MonteCarloPi(1, 1000000000);
+MonteCarloPi m6 = new MonteCarloPi(8, 1000000000);
+
+Instant prev5 = Instant.now();
+double res5 =   m5.findPI();
+Instant post5 = Instant.now();
+
+Instant prev6 = Instant.now();
+double res6 =   m6.findPI();
+Instant post6 = Instant.now();
+
+System.out.println(Duration.between(prev5, post5).toString());
+System.out.println(Math.abs(Math.PI - res5));
+System.out.println(Duration.between(prev6, post6).toString());
+System.out.println(Math.abs(Math.PI - res6));
