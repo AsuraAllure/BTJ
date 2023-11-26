@@ -4,17 +4,17 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CalculateMonteCarlo implements Callable<Double> {
-    private final int TOTAL_COUNT;
+    private final int totalCount;
     private final static int FOUR = 4;
 
     public CalculateMonteCarlo(int countPoint) {
-        TOTAL_COUNT = countPoint;
+        totalCount = countPoint;
     }
 
     @Override
     public Double call() {
         int countHit = 0;
-        for (int i = 0; i < TOTAL_COUNT; i++) {
+        for (int i = 0; i < totalCount; i++) {
             Point p = new Point(
                 ThreadLocalRandom.current().nextDouble(2),
                 ThreadLocalRandom.current().nextDouble(2)
@@ -24,10 +24,10 @@ public class CalculateMonteCarlo implements Callable<Double> {
                 countHit++;
             }
         }
-        if (TOTAL_COUNT <= 0) {
+        if (totalCount <= 0) {
             return 0.0;
         } else {
-            return FOUR * ((double) countHit / TOTAL_COUNT);
+            return FOUR * ((double) countHit / totalCount);
         }
     }
 
