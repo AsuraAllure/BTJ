@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class AsuraDataBase implements PersonDataBase {
-    private final Map<Integer, Person> DATABASE = new HashMap<>();
+    private final Map<Integer, Person> database = new HashMap<>();
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock(true);
     private int index = 0;
 
@@ -17,7 +17,7 @@ public class AsuraDataBase implements PersonDataBase {
     @Override
     public synchronized void add(Person person) {
         lock.writeLock().lock();
-        DATABASE.put(index, person);
+        database.put(index, person);
         index++;
         lock.writeLock().unlock();
     }
@@ -25,7 +25,7 @@ public class AsuraDataBase implements PersonDataBase {
     @Override
     public synchronized void delete(int id) {
         lock.writeLock().lock();
-        DATABASE.remove(id);
+        database.remove(id);
         lock.writeLock().unlock();
     }
 
@@ -33,7 +33,7 @@ public class AsuraDataBase implements PersonDataBase {
     public synchronized List<Person> findByName(String name) {
         lock.readLock().lock();
         List<Person> res = new ArrayList<>();
-        for (var pers : DATABASE.values()) {
+        for (var pers : database.values()) {
             if (pers.name().equals(name)) {
                 res.add(pers);
             }
@@ -46,7 +46,7 @@ public class AsuraDataBase implements PersonDataBase {
     public synchronized List<Person> findByAddress(String address) {
         lock.readLock().lock();
         List<Person> res = new ArrayList<>();
-        for (var pers : DATABASE.values()) {
+        for (var pers : database.values()) {
             if (pers.address().equals(address)) {
                 res.add(pers);
             }
@@ -59,7 +59,7 @@ public class AsuraDataBase implements PersonDataBase {
     public synchronized List<Person> findByPhone(String phone) {
         lock.readLock().lock();
         List<Person> res = new ArrayList<>();
-        for (var pers : DATABASE.values()) {
+        for (var pers : database.values()) {
             if (pers.name().equals(phone)) {
                 res.add(pers);
             }

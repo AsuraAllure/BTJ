@@ -8,25 +8,25 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class MonteCarloPi {
-    private final int COUNT_THREAD;
-    private final int TOTAL_COUNT;
+    private final int countThread;
+    private final int totalCount;
 
     public MonteCarloPi(int countThread, int totalCount) {
         if (countThread < 1 || totalCount < 1) {
             throw new IllegalArgumentException();
         }
 
-        COUNT_THREAD = countThread;
-        TOTAL_COUNT = totalCount;
+        this.countThread = countThread;
+        this.totalCount = totalCount;
     }
 
     public double findPI() {
-        ExecutorService executor = Executors.newFixedThreadPool(COUNT_THREAD);
+        ExecutorService executor = Executors.newFixedThreadPool(countThread);
         List<Future<Double>> results = new ArrayList<>();
 
-        int unusedThread = COUNT_THREAD + 1;
-        int unusedCount = TOTAL_COUNT;
-        for (int i = 0; i < COUNT_THREAD; i++) {
+        int unusedThread = countThread + 1;
+        int unusedCount = totalCount;
+        for (int i = 0; i < countThread; i++) {
             if (unusedCount > 0) {
                 unusedThread--;
             }
@@ -41,13 +41,13 @@ public class MonteCarloPi {
 
         double pi = 0;
         try {
-            for (int j = 0; j < COUNT_THREAD - unusedThread + 1; j++) {
+            for (int j = 0; j < countThread - unusedThread + 1; j++) {
                 pi += results.get(j).get();
             }
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        return pi / (COUNT_THREAD - unusedThread + 1);
+        return pi / (countThread - unusedThread + 1);
     }
 }

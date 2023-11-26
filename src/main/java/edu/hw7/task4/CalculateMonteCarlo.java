@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class CalculateMonteCarlo implements Callable<Double> {
     private final int TOTAL_COUNT;
+    private final static int FOUR = 4;
 
     public CalculateMonteCarlo(int countPoint) {
         TOTAL_COUNT = countPoint;
@@ -26,7 +27,7 @@ public class CalculateMonteCarlo implements Callable<Double> {
         if (TOTAL_COUNT <= 0) {
             return 0.0;
         } else {
-            return 4 * ((double) countHit / TOTAL_COUNT);
+            return FOUR * ((double) countHit / TOTAL_COUNT);
         }
     }
 
