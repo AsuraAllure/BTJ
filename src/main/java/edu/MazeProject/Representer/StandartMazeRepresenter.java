@@ -6,7 +6,6 @@ import edu.MazeProject.Elements2DMaze.NodeElements;
 import edu.MazeProject.Elements2DMaze.Wall;
 import edu.MazeProject.MazeGenerators.Configuration;
 import edu.MazeProject.Structures.RectangleMazeStructures;
-
 import java.io.PrintStream;
 import java.util.List;
 
