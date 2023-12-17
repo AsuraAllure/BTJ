@@ -4,7 +4,11 @@ import edu.MazeProject.Elements2DMaze.CordNode;
 import edu.MazeProject.Elements2DMaze.MazeNode;
 import edu.MazeProject.Elements2DMaze.Pass;
 import edu.MazeProject.Structures.RectangleMazeStructures;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BFSSolver {
     public List<CordNode> solve(RectangleMazeStructures maze, CordNode start, CordNode finish) {
@@ -63,7 +67,7 @@ public class BFSSolver {
         CordNode node = finish;
 
         if (!pathBetweenNode.containsKey(finish)) {
-            return new LinkedList<>();
+            return new ArrayList<>();
         }
 
         while (pathBetweenNode.get(node) != start) {

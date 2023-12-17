@@ -6,10 +6,12 @@ import edu.MazeProject.Elements2DMaze.NodeElements;
 import edu.MazeProject.Elements2DMaze.Wall;
 import edu.MazeProject.MazeGenerators.Configuration;
 import edu.MazeProject.Structures.RectangleMazeStructures;
+
 import java.io.PrintStream;
 import java.util.List;
 
 public class StandartMazeRepresenter {
+    private final static String WALL_FIGURE = "| |";
     private final PrintStream outputStream;
 
     public StandartMazeRepresenter(PrintStream out) {
@@ -22,7 +24,7 @@ public class StandartMazeRepresenter {
             return "---";
         }
 
-        return "| |";
+        return WALL_FIGURE;
     }
 
     private String checkWall(MazeNode node, char fill) {
@@ -47,7 +49,7 @@ public class StandartMazeRepresenter {
         if (node.getType().equals(NodeElements.NodeType.WALL)) {
             return "|_|";
         } else {
-            return "| |";
+            return WALL_FIGURE;
         }
     }
 
