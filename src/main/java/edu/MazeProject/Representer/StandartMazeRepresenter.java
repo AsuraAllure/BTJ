@@ -2,6 +2,7 @@ package edu.MazeProject.Representer;
 
 import edu.MazeProject.Elements2DMaze.CordNode;
 import edu.MazeProject.Elements2DMaze.MazeNode;
+import edu.MazeProject.Elements2DMaze.NodeElements;
 import edu.MazeProject.Elements2DMaze.Wall;
 import edu.MazeProject.MazeGenerators.Configuration;
 import edu.MazeProject.Structures.RectangleMazeStructures;
@@ -15,11 +16,45 @@ public class StandartMazeRepresenter {
         outputStream = out;
     }
 
+    private String checkCeil(NodeElements node) {
+
+        if (node.getType().equals(NodeElements.NodeType.WALL)) {
+            return "---";
+        }
+
+        return "| |";
+    }
+
+    private String checkWall(MazeNode node, char fill) {
+        StringBuilder builder = new StringBuilder();
+        if (node.getLeft().getType().equals(NodeElements.NodeType.WALL)) {
+            builder.append("|");
+        } else {
+            builder.append(" ");
+        }
+
+        builder.append(fill);
+
+        if (node.getRight().getType().equals(NodeElements.NodeType.WALL)) {
+            builder.append("|");
+        } else {
+            builder.append(" ");
+        }
+        return builder.toString();
+    }
+
+    private String checkFlour(NodeElements node) {
+        if (node.getType().equals(NodeElements.NodeType.WALL)) {
+            return "|_|";
+        } else {
+            return "| |";
+        }
+    }
+
     public void printPath(RectangleMazeStructures maze, List<CordNode> path) {
         StringBuilder result = new StringBuilder();
         Configuration conf = maze.getConfig();
         char fillChar;
-        final String lineDown = "| |";
 
         for (int i = 0; i < conf.dim1(); i++) {
             StringBuilder level1 = new StringBuilder();
@@ -33,31 +68,11 @@ public class StandartMazeRepresenter {
                     fillChar = ' ';
                 }
 
-                var el = maze.get(i, j);
+                MazeNode el = maze.get(i, j);
 
-                if (el.getTop().getClass().equals(Wall.class)) {
-                    level1.append("---");
-                } else {
-                    level1.append(lineDown);
-                }
-
-                if (el.getLeft().getClass().equals(Wall.class)) {
-                    level2.append("|").append(fillChar);
-                } else {
-                    level2.append(" ").append(fillChar);
-                }
-
-                if (el.getRight().getClass().equals(Wall.class)) {
-                    level2.append("|");
-                } else {
-                    level2.append(" ");
-                }
-
-                if (el.getBot().getClass().equals(Wall.class)) {
-                    level3.append("|_|");
-                } else {
-                    level3.append(lineDown);
-                }
+                level1.append(checkCeil(el.getTop()));
+                level2.append(checkWall(el, fillChar));
+                level3.append(checkFlour(el.getBot()));
             }
             result.append(level1);
             result.append('\n');
